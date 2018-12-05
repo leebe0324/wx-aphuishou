@@ -1,5 +1,7 @@
-Page({
+const createCoupon ='https://www.innothinking.cn/coupon/createCoupon'
 
+
+Page({
   /**
    * 页面的初始数据
    */
@@ -35,7 +37,7 @@ Page({
         //延时操作中要把this换成变量，否则this指向域会出问题
         setTimeout(function () {
             wx.request({
-              url: 'https://www.innothinking.cn/coupon/createCoupon',
+                url: createCoupon,
                 data: {
                     openid: _this.data.openid,
                     orderNumber: _this.data.orderNumber

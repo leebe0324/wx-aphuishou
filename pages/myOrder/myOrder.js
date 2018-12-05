@@ -1,3 +1,4 @@
+const order = 'https://www.innothinking.cn/order'
 Page({
 
     /**
@@ -17,8 +18,12 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
+
+        wx.showLoading({
+            title: '',
+        })
         wx.request({
-          url: 'https://www.innothinking.cn/order',
+            url: order,
             method: 'get',
             data: {
                 openid: options.openid
@@ -28,12 +33,23 @@ Page({
             },
             success: res => {
                 console.log('订单列表', res.data)
-                this.setData({
-                    appoint: res.data.unpickOrder,
-                    unpickOrder: res.data.unpickOrder,
-                    finishedOrder: res.data.finishedOrder
-                })
-                console.log('默认待回收', this.data.appoint)
+
+                if (res.data.code == 1) {
+                    wx.hideLoading()
+                    this.setData({
+                        appoint: res.data.unpickOrder,
+                        unpickOrder: res.data.unpickOrder,
+                        finishedOrder: res.data.finishedOrder
+                    })
+                    console.log('默认待回收', this.data.appoint)
+                } else {
+                    wx.hideLoading()
+                    wx.showToast({
+                        title: '订单加载失败',
+                        image: '../../assets/image/cry.png',
+                        duration: 2000
+                    })
+                }
             }
         })
     },
@@ -67,9 +83,12 @@ Page({
     cancelOrder: function(e) {
         console.log('点击取消', e.target.id)
 
+        wx.showLoading({
+            title: '',
+        })
         wx.request({
-          url: 'https://www.innothinking.cn/order/cancelOrder',
-            method: 'post',
+            url: order,
+            method: 'POST',
             data: {
                 orderNumber: e.target.id
             },
@@ -78,21 +97,34 @@ Page({
             },
             success: res => {
                 console.log('订单列表', res.data)
-                if(res.data.code==1)
-                {
+                if (res.data.code == 1) {
+                    wx.hideLoading()
                     wx.showToast({
                         title: '取消成功',
                         image: '../../assets/image/smlie.png',
                         duration: 2000
                     })
-                    setTimeout(function () {
+                    setTimeout(function() {
+                        wx.navigateBack({
+                            delta: 1
+                        })
+                    }, 2000)
+
+                } else {
+                    wx.hideLoading()
+                    wx.showToast({
+                        title: '取消失败',
+                        image: '../../assets/image/cry.png',
+                        duration: 2000
+                    })
+                    setTimeout(function() {
                         wx.navigateBack({
                             delta: 1
                         })
                     }, 2000)
 
                 }
-                
+
             }
         })
     },

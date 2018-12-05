@@ -7,10 +7,10 @@
 
     <view class='myOrderadd' wx:for="{{appoint}}" wx:key="*this" hidden='{{reveal1}}'>
         <view>
-            <image src='https://shoula.stoyard.com/uploads/20180625/8c1e9b107fe38f64f9b62ad1090e6773.jpg'></image>
+            <image src='../../assets/image/yuyuedingdan.png'></image>
         </view>
         <view>
-            <text>{{item.appoint_time}}</text>
+            <text>{{item.createTime}}</text>
             <text>{{item.communityName+item.address
 }}</text>
         </view>
@@ -20,10 +20,10 @@
     </view>
     <view class='myOrderadd' wx:for="{{appoint}}" wx:key="*this" hidden='{{reveal2}}'>
         <view>
-            <image src='https://shoula.stoyard.com/uploads/20180625/8c1e9b107fe38f64f9b62ad1090e6773.jpg'></image>
+            <image src='../../assets/image/yuyuedingdan.png'></image>
         </view>
         <view>
-            <text>{{item.appoint_time}}</text>
+            <text>{{item.createTime}}</text>
             <text>{{item.communityName+item.address}}</text>
         </view>
         <view> 

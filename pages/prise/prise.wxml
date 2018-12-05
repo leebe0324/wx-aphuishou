@@ -1,5 +1,5 @@
 <view class="prise">
-  <image class="cjback" src="../../assets/image/cjback.png" mode="widthFix"></image>
+  <image class="cjback" src="../../assets/image/cjback.jpg" mode="widthFix"></image>
   <button class="cjbutton" bindtap="getPrise">
   	<image src="../../assets/image/cjbutton.png" mode="widthFix"></image>
   </button>

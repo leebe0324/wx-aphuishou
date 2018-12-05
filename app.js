@@ -1,4 +1,6 @@
 //app.js
+
+const loginApi ='https://www.innothinking.cn/login/getCode2Session'
 App({
     globalData: {
         userInfo: null,
@@ -33,7 +35,7 @@ App({
                                     success: r => {
                                         //请求后台换取openid
                                         wx.request({
-                                          url: 'https://www.innothinking.cn/login/getCode2Session',
+                                            url: loginApi,
                                             method: 'get',
                                             data: {
                                                 'code': res.code,
@@ -44,13 +46,27 @@ App({
                                                 'content-type': 'application/json'
                                             },
                                             success: res => {
-                                                this.globalData.openid = res.data.openid
-                                                this.globalData.userInfo = r.userInfo
-                                                wx.removeStorageSync('openid')
-                                                wx.setStorageSync('openid', res.data.openid)
-                                                console.log('appjs缓存openid', wx.getStorageSync('openid'))
 
-                                                wx.hideLoading()
+                                                if(res.data.code==1)
+                                                {
+                                                    wx.hideLoading()
+                                                    console.log('appjs获取数据', res)
+                                                    this.globalData.openid = res.data.openid
+                                                    this.globalData.userInfo = r.userInfo
+                                                    wx.removeStorageSync('openid')
+                                                    wx.setStorageSync('openid', res.data.openid)
+                                                    console.log('appjs缓存openid', wx.getStorageSync('openid'))
+
+                                                }else
+                                                {
+                                                    wx.hideLoading()
+                                                    wx.showToast({
+                                                        title: '程序加载数据失败',
+                                                        image: '../../assets/image/cry.png',
+                                                        duration: 2000
+                                                    })
+
+                                                }
                                             },
                                             fail: erro => {
                                                 wx.showToast({

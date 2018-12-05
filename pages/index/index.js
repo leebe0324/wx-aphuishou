@@ -1,5 +1,8 @@
 //index.js
 //获取应用实例
+const loginApi = 'https://www.innothinking.cn/login/getCode2Session'
+const getPageMsgApi = 'https://www.innothinking.cn/login/getPageMsg'
+const createOrder = 'https://www.innothinking.cn/order/createOrder'
 const app = getApp()
 Page({
     data: {
@@ -49,7 +52,7 @@ Page({
                                     console.log('首页用户信息', r)
                                     //请求后台换取openid
                                     wx.request({
-                                      url: 'https://www.innothinking.cn/login/getCode2Session',
+                                        url: loginApi,
                                         method: 'get',
                                         data: {
                                             'code': res.code,
@@ -66,7 +69,7 @@ Page({
                                             this.setData({
                                                 openid: res.data.openid
                                             })
-                                            console.log('首页存openid',this.data.openid)
+                                            console.log('首页存openid', this.data.openid)
                                         },
                                         fail: erro => {
                                             wx.showToast({
@@ -88,7 +91,7 @@ Page({
         })
         var _this = this
         wx.request({
-          url: 'https://www.innothinking.cn/login/getPageMsg',
+            url: getPageMsgApi,
             method: 'get',
             header: {
                 'content-type': 'application/json' // 默认值
@@ -116,8 +119,8 @@ Page({
                     })
                     wx.hideLoading()
                 }
-            },fail:res=>
-            {
+            },
+            fail: res => {
                 wx.showToast({
                     title: '网络请求失败',
                     image: '../../assets/image/cry.png',
@@ -358,13 +361,13 @@ Page({
 
             }
             wx.request({
-              url: 'https://www.innothinking.cn/order/createOrder',
+                url: createOrder,
                 method: 'post',
                 data: {
                     openid: this.data.openid,
                     categoryIds: this.data.navSelect,
                     pickTime: v5 + v6 + '-' + v7,
-                    address:  v1 + '栋楼' + v2 + '层' + v3 + '号',
+                    address: v1 + '栋楼' + v2 + '层' + v3 + '号',
                     communityName: this.data.comm,
                     phoneNumber: v4
                 },
@@ -377,14 +380,14 @@ Page({
                     if (res.data.code == 1) {
 
                         wx.navigateTo({
-                            url: '../orderSuccess/orderSuccess?orderNumber=' + res.data.orderNumber+'&openid='+this.data.openid,
+                            url: '../orderSuccess/orderSuccess?orderNumber=' + res.data.orderNumber + '&openid=' + this.data.openid,
                         })
 
                     } else {
                         wx.showToast({
                             title: '预约失败',
                             image: '../../assets/image/cry.png',
-                            duration:2000
+                            duration: 2000
                         })
                     }
 
