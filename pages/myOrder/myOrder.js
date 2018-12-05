@@ -18,7 +18,7 @@ Page({
      */
     onLoad: function(options) {
         wx.request({
-            url: 'http://10.10.16.218:8123/order',
+          url: 'https://www.innothinking.cn/order',
             method: 'get',
             data: {
                 openid: options.openid
@@ -68,7 +68,7 @@ Page({
         console.log('点击取消', e.target.id)
 
         wx.request({
-            url: 'http://10.10.16.218:8123/order/cancelOrder',
+          url: 'https://www.innothinking.cn/order/cancelOrder',
             method: 'post',
             data: {
                 orderNumber: e.target.id

@@ -35,7 +35,7 @@ Page({
         //延时操作中要把this换成变量，否则this指向域会出问题
         setTimeout(function () {
             wx.request({
-                url: 'http://10.10.16.218:8123/coupon/createCoupon',
+              url: 'https://www.innothinking.cn/coupon/createCoupon',
                 data: {
                     openid: _this.data.openid,
                     orderNumber: _this.data.orderNumber

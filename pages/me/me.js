@@ -25,7 +25,7 @@ Page({
                               success: r => {
                                   //请求后台换取openid
                                   wx.request({
-                                      url: 'http://10.10.16.218:8123/login/getCode2Session',
+                                    url: 'https://www.innothinking.cn/login/getCode2Session',
                                       method: 'get',
                                       data: {
                                           'code': res.code,

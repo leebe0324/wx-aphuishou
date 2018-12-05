@@ -18,7 +18,7 @@ Page({
       console.log('查看优惠券',options.openid)
 
       wx.request({
-          url: 'http://10.10.16.218:8123/coupon',
+        url: 'https://www.innothinking.cn/coupon',
           method:'get',
           data:{
               openid:this.data.openid

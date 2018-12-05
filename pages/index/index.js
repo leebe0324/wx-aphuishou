@@ -49,7 +49,7 @@ Page({
                                     console.log('首页用户信息', r)
                                     //请求后台换取openid
                                     wx.request({
-                                        url: 'http://10.10.16.218:8123/login/getCode2Session',
+                                      url: 'https://www.innothinking.cn/login/getCode2Session',
                                         method: 'get',
                                         data: {
                                             'code': res.code,
@@ -88,7 +88,7 @@ Page({
         })
         var _this = this
         wx.request({
-            url: 'http://10.10.16.218:8123/login/getPageMsg',
+          url: 'https://www.innothinking.cn/login/getPageMsg',
             method: 'get',
             header: {
                 'content-type': 'application/json' // 默认值
@@ -358,7 +358,7 @@ Page({
 
             }
             wx.request({
-                url: 'http://10.10.16.218:8123/order/createOrder',
+              url: 'https://www.innothinking.cn/order/createOrder',
                 method: 'post',
                 data: {
                     openid: this.data.openid,
