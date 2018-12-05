@@ -1,0 +1,33 @@
+<view class='order'>
+    <view class='myOrderClassify'>
+        <text class="{{active == 1? 'active1': ''}}" bindtap="waitRecycle">待回收</text>
+        <text class="{{active == 2? 'active1': ''}}" bindtap='completeRecycle'>已完成</text>
+    </view>
+
+
+    <view class='myOrderadd' wx:for="{{appoint}}" wx:key="*this" hidden='{{reveal1}}'>
+        <view>
+            <image src='https://shoula.stoyard.com/uploads/20180625/8c1e9b107fe38f64f9b62ad1090e6773.jpg'></image>
+        </view>
+        <view>
+            <text>{{item.appoint_time}}</text>
+            <text>{{item.communityName+item.address
+}}</text>
+        </view>
+        <view>
+            <button id='{{ item.orderNumber}}' bindtap='cancelOrder'>取消预约</button>
+        </view>
+    </view>
+    <view class='myOrderadd' wx:for="{{appoint}}" wx:key="*this" hidden='{{reveal2}}'>
+        <view>
+            <image src='https://shoula.stoyard.com/uploads/20180625/8c1e9b107fe38f64f9b62ad1090e6773.jpg'></image>
+        </view>
+        <view>
+            <text>{{item.appoint_time}}</text>
+            <text>{{item.communityName+item.address}}</text>
+        </view>
+        <view> 
+            <button disabled='true' hidden='true'></button>
+        </view>
+    </view>
+</view>

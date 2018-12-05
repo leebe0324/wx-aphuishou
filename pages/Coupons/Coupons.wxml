@@ -1,0 +1,26 @@
+<view>
+    <block wx:for="{{discount}}" wx:key="*this">
+        <view class='unusedCoupons '>
+            <view>
+                <view class='w50'>
+                    <text class='yuan'>￥</text>
+                    <text class='fsize'>{{item.money}}</text>
+                </view>
+                <view class='w50'>
+                    <text>{{item.name}}</text>
+                    <text>{{item.merchantAddress}}</text>
+                    <text>{{item.deadTime}}</text>
+                    <button class="cou-use" bindtap='changeType' id="{{item.couponNumber}}" wx:if="{{item.status==1}}">
+                        未使用
+                    </button>
+                     <button class="cou-use" bindtap='changeType' id="{{item.couponNumber}}" wx:if="{{item.status==2}}">
+                        已使用
+                    </button>
+                     <button class="cou-use" bindtap='changeType' id="{{item.couponNumber}}" wx:if="{{item.status==3}}">
+                        未审核
+                    </button>
+                </view>
+            </view>
+        </view>
+    </block>
+</view>

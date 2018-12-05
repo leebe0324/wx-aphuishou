@@ -1,0 +1,31 @@
+.order-1{
+    margin: 80rpx 45rpx;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    border: 1px solid #d3d3d3;
+    border-radius: 15rpx;
+    background: #f9f9f9;
+    padding: 40rpx 0;
+}
+.order-1 view{
+    display: inline-block;
+}
+.order-1 view text{
+    display: block;
+    margin-left: 40rpx;
+    font-size: 28rpx;
+}
+.order-1 view text:first-child{
+    font-size: 44rpx;
+}
+
+button{
+    margin: 0 45rpx;
+    background-image: linear-gradient(-90deg, #8CDE44 0%, #57D537 97%);
+    box-shadow: 0 9rpx 8rpx 0 rgba(0,0,0,0.10);
+    border-radius: 100rpx;
+    color: #ffffff;
+    font-weight: 300;
+    font-size: 32rpx;
+}

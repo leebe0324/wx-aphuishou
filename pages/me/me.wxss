@@ -1,0 +1,56 @@
+.myobtain{
+    background-color: #3092F1;
+    height: 342rpx;
+}
+
+.myobtain text{
+    display: block;
+    color: #ffffff;
+    text-align: center
+}
+
+.myobtain text:first-child{
+    padding-top: 60rpx;
+}
+
+.myobtain .money{
+    font-size: 120rpx;
+}
+
+.myobtain .myobtain-in text{
+    display: inline-block;
+    padding-top: 10rpx;
+}
+
+.myobtain .myobtain-in{
+    text-align: center
+}
+
+.myorder {
+    line-height: 90rpx;
+    padding: 0 46rpx;
+    border-bottom: 1px solid #dcdcdc;
+    display: flex;
+    position: relative
+}
+
+.myorder text{
+    font-size: 28rpx;
+    color: #111111;
+}
+
+.myorder icon:first-child{
+    font-size: 45rpx;
+    color: #5AD22B;
+    margin-right: 22rpx;
+}
+
+.myorder icon{
+    font-size: 32rpx;
+    color: #999999;
+}
+
+.myorder icon:last-child{
+    position: absolute;
+    right: 46rpx;
+}

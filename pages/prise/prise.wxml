@@ -1,0 +1,14 @@
+<view class="prise">
+  <image class="cjback" src="../../assets/image/cjback.png" mode="widthFix"></image>
+  <button class="cjbutton" bindtap="getPrise">
+  	<image src="../../assets/image/cjbutton.png" mode="widthFix"></image>
+  </button>
+  <image class="cjdesk {{transrotate}}" src="../../assets/image/cjdesk.png" mode="widthFix"></image>
+  <view class="cjpopback" style="{{display}}">
+    <view class="cjpop">
+    <text class="cjtitle">恭喜您获得</text>
+    <text class="cjquan">{{title}}门店优惠券</text>
+    <button class="cjpopbutton"  bindtap="discount">去查看</button>
+    </view>
+  </view>
+</view>

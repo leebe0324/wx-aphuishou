@@ -1,0 +1,62 @@
+page{
+    background: #f7f7f7;
+}
+.myOrderClassify{
+    border-bottom: 1rpx solid #cccccc;
+    background: #ffffff;
+    margin-bottom: 10rpx;
+}
+
+.myOrderClassify text {
+    padding: 24rpx 0;
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+    font-size: 24rpx;
+    color: #999999;
+    letter-spacing: 0;
+}
+
+.myOrderClassify .active1{
+    color: #111;
+}
+
+.myOrderadd{
+    display: flex;
+    justify-content: space-between;
+    background: #ffffff;
+    padding: 34rpx 0;
+    border-bottom: 1rpx solid #cccccc;
+}
+
+.myOrderadd > view:nth-child(1){
+    margin-left: 31rpx;
+}
+
+.myOrderadd > view:nth-child(2){
+    line-height: 50rpx;
+}
+
+.myOrderadd > view:nth-child(3){
+    margin-right: 31rpx;
+    padding-top: 30rpx;
+}
+
+.myOrderadd image{
+    width: 106rpx;
+    height: 106rpx;
+}
+
+.myOrderadd text{
+    display: block;
+    font-size: 25rpx;
+    color: #111111;
+}
+
+.myOrderadd button{
+    border-radius: 100rpx;
+    border: 1rpx solid #4ca1f1;
+    font-size: 22rpx;
+    color: #4ca1f1;
+    background-color: #ffffff;
+}

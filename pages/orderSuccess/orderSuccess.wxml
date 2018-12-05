@@ -1,0 +1,10 @@
+<view>
+    <view class='order-1'>
+        <icon type='success' size='40'></icon>
+        <view>
+            <text>预约成功</text>
+            <text>等待收取人员联系</text>
+        </view>
+    </view>
+    <button bindtap='goprice' disabled='{{oBtn}}'>去抽奖</button>
+</view>
