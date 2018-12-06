@@ -47,5 +47,5 @@ button{
 .textc {
     margin-top: 40%;
     text-align: center;
-    color: #999;
+    color: #999999;
 }
