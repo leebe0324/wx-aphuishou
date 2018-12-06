@@ -1,4 +1,5 @@
 const order = 'https://www.innothinking.cn/order'
+const cancelOrder ='https://www.innothinking.cn/order/cancelOrder'
 Page({
 
     /**
@@ -11,7 +12,8 @@ Page({
         reveal2: true,
         active: 1,
         finishedOrder: [],
-        unpickOrder: []
+        unpickOrder: [],
+        show:false
     },
 
     /**
@@ -36,6 +38,16 @@ Page({
 
                 if (res.data.code == 1) {
                     wx.hideLoading()
+                    if(res.data.unpickOrder===" ")
+                    {
+
+                    }else
+                    {
+                        this.setData({
+                            show:true
+                        })
+
+                    }
                     this.setData({
                         appoint: res.data.unpickOrder,
                         unpickOrder: res.data.unpickOrder,
@@ -62,6 +74,18 @@ Page({
             reveal1: false,
             reveal2: true
         })
+
+        if (this.data.unpickOrder.length == 0) {
+
+            this.setData({
+                show: false
+            })
+        } else {
+            this.setData({
+                show: true
+            })
+
+        }
         this.setData({
             appoint: this.data.unpickOrder
         })
@@ -76,6 +100,21 @@ Page({
             reveal1: true,
             reveal2: false
         })
+        if (this.data.finishedOrder.length==0) {
+
+            console.log('已回收没数据',this.data.finishedOrder)
+            this.setData({
+                show: false
+            })
+
+        } else {
+            this.setData({
+                show: true
+            })
+
+            console.log('已回收有数据', this.data.finishedOrder)
+
+        }
         this.setData({
             appoint: this.data.finishedOrder
         })
@@ -87,7 +126,7 @@ Page({
             title: '',
         })
         wx.request({
-            url: order,
+            url: cancelOrder,
             method: 'POST',
             data: {
                 orderNumber: e.target.id
