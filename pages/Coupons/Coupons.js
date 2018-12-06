@@ -7,7 +7,8 @@ Page({
      */
     data: {
         discount: '',
-        openid: ''
+        openid: '',
+        show:false
     },
 
     /**
@@ -32,6 +33,17 @@ Page({
             },
             success: res => {
                 if (res.data.code == 1) {
+                    if(res.data.coupons===" ")
+                    {
+                        console.log('没数据')
+                    }else
+                    {
+                        console.log('有数据')
+                        this.setData({
+                            show: true
+                        })
+                  
+                    }
                     wx.hideLoading()
                     console.log('优惠券列表', res.data)
                     this.setData({
