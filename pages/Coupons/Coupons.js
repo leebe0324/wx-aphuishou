@@ -33,7 +33,7 @@ Page({
             },
             success: res => {
                 if (res.data.code == 1) {
-                    if(res.data.coupons===" ")
+                    if (res.data.coupons.length == 0)
                     {
                         console.log('没数据')
                     }else

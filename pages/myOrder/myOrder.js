@@ -38,7 +38,7 @@ Page({
 
                 if (res.data.code == 1) {
                     wx.hideLoading()
-                    if(res.data.unpickOrder===" ")
+                    if (res.data.unpickOrder.length == 0)
                     {
 
                     }else
