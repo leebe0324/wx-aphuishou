@@ -30,4 +30,7 @@
             <button disabled='true' hidden='true'></button>
         </view>
     </view>
+    <view class='textc' hidden='{{}}'>
+        <text>暂无数据</text>
+    </view>
 </view>

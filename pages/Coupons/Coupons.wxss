@@ -43,3 +43,9 @@ button{
     line-height: 60rpx;
     margin-top: 10rpx;
 }
+
+.textc {
+    margin-top: 40%;
+    text-align: center;
+    color: #999;
+}

@@ -23,4 +23,7 @@
             </view>
         </view>
     </block>
+    <view class='textc' hidden='{{}}'>
+        <text>暂无数据</text>
+    </view>
 </view>
