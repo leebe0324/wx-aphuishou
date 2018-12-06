@@ -64,7 +64,6 @@ Page({
                             success(res) {
                                 if (res.confirm) {
                                     console.log('用户点击确定')
-
                                     //待定跳转
                                     wx.navigateBack({
                                         delta: 1

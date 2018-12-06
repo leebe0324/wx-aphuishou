@@ -77,7 +77,7 @@ Page({
 
         var context
         if (e._relatedInfo.anchorTargetText == '未审核') {
-            context = '优惠券审核中，审核完毕后使用'
+            context = '后台系统核实订单后，可立即使用'
         } else {
             context = e.target.id
         }
