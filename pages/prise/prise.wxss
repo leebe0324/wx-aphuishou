@@ -1,105 +1,117 @@
-.prise{
-  width:750rpx;
-  height:100vh;
-  overflow:hidden;
-}
-.cjback{
-  width:100%;
-  margin-top:-110rpx;
-  position: relative;
-  z-index:1;
-}
-.transrotate{
-  transform: rotate(1080deg);
-  transition: all 1.5s ease-in-out;
-}
-.cjbutton{
-  width:121rpx;
-height:121rpx;
-background:transparent;
-border:0;
-outline:0;
-padding:0;
-position:absolute;
-z-index:3;
-top:616rpx;
-left:312rpx;
-border-radius: 100%;
-}
-.cjbutton image{
-  width:100%;
-  height:100%;
-}
-.cjdesk{
-  width:600rpx;
-  position:absolute;
-  z-index:2;
-  top:373rpx;
-  left:73rpx;
-  height:600px;
-}
-.prise-des{
-  position:fixed;
-  bottom:0;
-  padding:0 0 40rpx 70rpx;
-  box-sizing: border-box;
-}
-.pri-1{
-  display:block;
-  font-size:26rpx;
-  line-height:37rpx;
-}
-.pri-2{
-  font-size: 32rpx;
-  line-height:45rpx;
-}
-.pri-3{
-  margin-top:10rpx;
+.prise {
+    width: 750rpx;
+    height: 100vh;
+    overflow: hidden;
 }
 
-.cjpopback{
-  display:none;
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.65);
-  z-index:9;
+.cjback {
+    width: 100%;
+    margin-top: -110rpx;
+    position: relative;
+    z-index: 1;
 }
-.cjpop{
-  width:540rpx;
-  height:270rpx;
-  background:#fff;
-  border-radius:24rpx;
-  margin:400rpx auto 0rpx;
-  padding:30rpx;
-}
-.cjtitle{
-  font-size:32rpx;
-display:block;
-text-align:center;
-line-height:2;
 
+.transrotate {
+    transform: rotate(1080deg);
+    transition: all 1.5s ease-in-out;
 }
-.cjquan{
-  font-size:36rpx;
-line-height:2.4;
-text-align:center;
-display:block;
 
+.cjbutton {
+    width: 181rpx;
+    height: 181rpx;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    padding: 0;
+    position: absolute;
+    z-index: 3;
+    top: 586rpx;
+    left: 282rpx;
+    border-radius: 100%;
 }
-.cjpopbutton{
-  width:500rpx;
-height:96rpx;
-background-image:linear-gradient(-90deg, #5ECBEC 0%, #448DF3 100%);
-box-shadow:0 5px 5px 0 rgba(77,161,241,0.36);
-border-radius:100px;
-color:#fff;
-font-size:32rpx;
-font-weight:normal;
-line-height:96rpx;
-transition:all .3s;
-margin-top:15rpx;
+.cjbutton::after{
+    border: none;
+}
+.cjbutton image {
+    width: 100%;
+    height: 100%;
+}
 
+.cjdesk {
+    width: 600rpx;
+    position: absolute;
+    z-index: 2;
+    top: 373rpx;
+    left: 73rpx;
+    height: 600px;
+}
+
+.prise-des {
+    position: fixed;
+    bottom: 0;
+    padding: 0 0 40rpx 70rpx;
+    box-sizing: border-box;
+}
+
+.pri-1 {
+    display: block;
+    font-size: 26rpx;
+    line-height: 37rpx;
+}
+
+.pri-2 {
+    font-size: 32rpx;
+    line-height: 45rpx;
+}
+
+.pri-3 {
+    margin-top: 10rpx;
+}
+
+.cjpopback {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.65);
+    z-index: 9;
+}
+
+.cjpop {
+    width: 540rpx;
+    height: 270rpx;
+    background: #fff;
+    border-radius: 24rpx;
+    margin: 400rpx auto 0rpx;
+    padding: 30rpx;
+}
+
+.cjtitle {
+    font-size: 32rpx;
+    display: block;
+    text-align: center;
+    line-height: 2;
+}
+
+.cjquan {
+    font-size: 36rpx;
+    line-height: 2.4;
+    text-align: center;
+    display: block;
+}
+
+.cjpopbutton {
+    width: 500rpx;
+    height: 96rpx;
+    background-image: linear-gradient(-90deg, #5ecbec 0%, #448df3 100%);
+    box-shadow: 0 5px 5px 0 rgba(77, 161, 241, 0.36);
+    border-radius: 100px;
+    color: #fff;
+    font-size: 32rpx;
+    font-weight: normal;
+    line-height: 96rpx;
+    transition: all 0.3s;
+    margin-top: 15rpx;
 }
