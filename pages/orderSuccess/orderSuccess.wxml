@@ -6,5 +6,7 @@
             <text>等待收取人员联系</text>
         </view>
     </view>
-    <button bindtap='goprice' disabled='{{oBtn}}'>去抽奖</button>
+    <button class="{{oBtn == true? 'btn':''}}"bindtap='goprice' disabled='{{oBtn}}'>
+        去抽奖
+    </button>
 </view>
