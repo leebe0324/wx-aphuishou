@@ -4,7 +4,7 @@
   overflow:hidden;
 }
 .cjback{
-  width:750rpx;
+  width:100%;
   margin-top:-110rpx;
   position: relative;
   z-index:1;
