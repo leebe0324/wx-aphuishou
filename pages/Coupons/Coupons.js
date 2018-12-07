@@ -33,6 +33,11 @@ Page({
             },
             success: res => {
                 if (res.data.code == 1) {
+
+                    this.setData({
+                        discount: res.data.coupons
+                    })
+
                     if (res.data.coupons.length == 0)
                     {
                         console.log('没数据')
@@ -46,9 +51,7 @@ Page({
                     }
                     wx.hideLoading()
                     console.log('优惠券列表', res.data)
-                    this.setData({
-                        discount: res.data.coupons
-                    })
+
                 } else {
                     wx.hideLoading()
                     wx.showToast({
@@ -56,10 +59,7 @@ Page({
                         image: '../../assets/image/cry.png',
                         duration: 2000
                     })
-
                 }
-
-                //   console.log()
             },
             fail: res => {
                 wx.showToast({
@@ -76,7 +76,7 @@ Page({
         console.log('点击了', e)
 
         var context
-        if (e._relatedInfo.anchorTargetText == '未审核') {
+        if (e._relatedInfo.anchorTargetText == '待审核') {
             context = '后台系统核实订单后，可立即使用'
         } else {
             context = e.target.id

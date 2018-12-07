@@ -1,5 +1,5 @@
 const order = 'https://www.innothinking.cn/order'
-const cancelOrder ='https://www.innothinking.cn/order/cancelOrder'
+const cancelOrder = 'https://www.innothinking.cn/order/cancelOrder'
 Page({
 
     /**
@@ -13,7 +13,7 @@ Page({
         active: 1,
         finishedOrder: [],
         unpickOrder: [],
-        show:false
+        show: false
     },
 
     /**
@@ -38,13 +38,11 @@ Page({
 
                 if (res.data.code == 1) {
                     wx.hideLoading()
-                    if (res.data.unpickOrder.length == 0)
-                    {
+                    if (res.data.unpickOrder.length == 0) {
 
-                    }else
-                    {
+                    } else {
                         this.setData({
-                            show:true
+                            show: true
                         })
 
                     }
@@ -100,20 +98,16 @@ Page({
             reveal1: true,
             reveal2: false
         })
-        if (this.data.finishedOrder.length==0) {
-
-            console.log('已回收没数据',this.data.finishedOrder)
+        if (this.data.finishedOrder.length == 0) {
+            console.log('已回收没数据', this.data.finishedOrder)
             this.setData({
                 show: false
             })
-
         } else {
             this.setData({
                 show: true
             })
-
             console.log('已回收有数据', this.data.finishedOrder)
-
         }
         this.setData({
             appoint: this.data.finishedOrder
@@ -121,49 +115,63 @@ Page({
     },
     cancelOrder: function(e) {
         console.log('点击取消', e.target.id)
-
-        wx.showLoading({
+        var orderNumber = e.target.id
+        wx.showModal({
             title: '',
-        })
-        wx.request({
-            url: cancelOrder,
-            method: 'POST',
-            data: {
-                orderNumber: e.target.id
-            },
-            header: {
-                'content-type': 'application/x-www-form-urlencoded'
-            },
-            success: res => {
-                console.log('订单列表', res.data)
-                if (res.data.code == 1) {
-                    wx.hideLoading()
-                    wx.showToast({
-                        title: '取消成功',
-                        image: '../../assets/image/smlie.png',
-                        duration: 2000
+            content: '是否取消预约？',
+            success(res) {
+                if (res.confirm) {
+                    console.log('用户点击确定')
+                    wx.showLoading({
+                        title: '',
                     })
-                    setTimeout(function() {
-                        wx.navigateBack({
-                            delta: 1
-                        })
-                    }, 2000)
 
-                } else {
-                    wx.hideLoading()
-                    wx.showToast({
-                        title: '取消失败',
-                        image: '../../assets/image/cry.png',
-                        duration: 2000
+                    wx.request({
+                        url: cancelOrder,
+                        method: 'POST',
+                        data: {
+                            orderNumber: orderNumber
+                        },
+                        header: {
+                            'content-type': 'application/x-www-form-urlencoded'
+                        },
+                        success: res => {
+                            console.log('订单列表', res.data)
+                            if (res.data.code == 1) {
+                                wx.hideLoading()
+                                wx.showToast({
+                                    title: '取消成功',
+                                    image: '../../assets/image/smlie.png',
+                                    duration: 2000
+                                })
+                                setTimeout(function() {
+                                    wx.navigateBack({
+                                        delta: 1
+                                    })
+                                }, 2000)
+
+                            } else {
+                                wx.hideLoading()
+                                wx.showToast({
+                                    title: '取消失败',
+                                    image: '../../assets/image/cry.png',
+                                    duration: 2000
+                                })
+                                setTimeout(function() {
+                                    wx.navigateBack({
+                                        delta: 1
+                                    })
+                                }, 2000)
+
+                            }
+
+                        }
                     })
-                    setTimeout(function() {
-                        wx.navigateBack({
-                            delta: 1
-                        })
-                    }, 2000)
+
+                } else if (res.cancel) {
+                    console.log('用户点击取消')
 
                 }
-
             }
         })
     },

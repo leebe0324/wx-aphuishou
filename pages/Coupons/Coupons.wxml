@@ -17,7 +17,7 @@
                         已使用
                     </button>
                      <button class="cou-use" bindtap='changeType' id="{{item.couponNumber}}" wx:if="{{item.status==3}}">
-                        未审核
+                        待审核
                     </button>
                 </view>
             </view>
