@@ -27,7 +27,8 @@
         <view class="section bordert">
             <picker mode="date" value="{{date}}" start="{{startdate}}" end="{{enddate}}" bindchange="bindDateChange">
                 <view class="picker">
-                    回收时间: {{date}}
+                    <text class='mr20'>回收时间:</text>
+                    <text>{{date}}</text>
                 </view>
             </picker>
             <picker bindchange="bindstartTimeChange" value="{{starttime}}" range="{{array}}" class='' start="07:00" end="20:00" mode="time">
