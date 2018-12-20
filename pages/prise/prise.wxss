@@ -17,16 +17,16 @@
 }
 
 .cjbutton {
-    width: 181rpx;
-    height: 181rpx;
+    width: 240rpx;
+    height: 240rpx;
     background: transparent;
     border: 0;
     outline: 0;
     padding: 0;
     position: absolute;
     z-index: 3;
-    top: 586rpx;
-    left: 282rpx;
+    top: 556rpx;
+    left: 252rpx;
     border-radius: 100%;
 }
 .cjbutton::after{
