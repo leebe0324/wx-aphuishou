@@ -27,7 +27,7 @@
             <text>{{item.communityName+item.address}}</text>
         </view>
         <view> 
-            <button disabled='true' hidden='true'></button>
+            <button disabled='true' class='successBtn'>已完成</button>
         </view>
     </view>
     <view class='textc' hidden='{{!show}}'>
