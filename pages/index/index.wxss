@@ -1,6 +1,6 @@
 /**index.wxss**/
 .swiper {
-    height: 400rpx;
+    height: 150px;
     width: 100%;
 }
 
