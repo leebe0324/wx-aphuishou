@@ -62,6 +62,10 @@ page {
     background-color: #fff;
 }
 
+.myOrderadd .successBtn {
+    border: 1rpx solid #ccc;
+}
+
 .textc {
     margin-top: 40%;
     text-align: center;
