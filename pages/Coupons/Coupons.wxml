@@ -23,7 +23,7 @@
             </view>
         </view>
     </block>
-    <view class='textc' hidden='{{show}}'>
+    <view class='textc' hidden='{{!show}}'>
         <text>暂无数据</text>
     </view>
 </view>

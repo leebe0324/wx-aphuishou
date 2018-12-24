@@ -1,4 +1,5 @@
 <!--pages/index/index.wxml-->
+
 <view>
     <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
         <block wx:for="{{imgUrls}}" wx:key="">
@@ -11,7 +12,6 @@
         <text class='title'>{{title}}</text>
     </view>
     <form>
-
         <view class='classify'>
             <!--wx:for:循环classify数组  wx:key:遍历出classify.id   wx:for-index:遍历classify数组下标-->
             <view wx:for="{{classify}}" wx:key="classify.id" wx:for-index="idx" bindtap="bindChoice">
@@ -50,16 +50,16 @@
                     {{address[index]}}
                 </view>
             </picker>
-            <input type='text' placeholder='1' bindinput="write" data-id="1" placeholder-class="place-holder"></input>
+            <input type='text' placeholder='{{placeHolder}}' bindinput="write" data-id="1" placeholder-class="place-holder" ></input>
             <text>栋</text>
-            <input type='text' placeholder='1' bindinput="write" data-id="2" placeholder-class="place-holder"></input>
+            <input type='text' placeholder='{{placeHolder}}' bindinput="write" data-id="2" placeholder-class="place-holder" adjust-position='true'></input>
             <text>层</text>
-            <input type='text' placeholder='1' bindinput="write" data-id="3" placeholder-class="place-holder"></input>
+            <input type='text' placeholder='{{placeHolder}}'bindinput="write" data-id="3" placeholder-class="place-holder" adjust-position='true'></input>
             <text>房间号</text>
         </view>
         <view class='section phoneee'>
             <text>预留手机</text>
-            <input type='text' placeholder='请输入手机号' class='phone' bindinput="write" data-id="4" placeholder-class="place-holder"></input>
+            <input type='text' placeholder='{{placeHolderForPhone}}' class='phone' bindinput="write" data-id="4" placeholder-class="place-holder" adjust-position='true'></input>
         </view>
         <view class='section bnone'>
             <button bindtap='order'>预约回收</button>
@@ -67,6 +67,6 @@
         <view class='mb20'>
         </view>
     </form>
-
 </view>
+
 

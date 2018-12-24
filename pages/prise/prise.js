@@ -18,9 +18,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
       console.log('优惠券接收数据',options)
-
       this.setData({
           openid:options.openid,
           orderNumber:options.orderNumber

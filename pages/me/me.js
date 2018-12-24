@@ -13,12 +13,11 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function(options) {
-
+    onShow: function(options) {
         wx.showLoading({
             title: '',
+            mask: true
         })
-
         wx.login({
             success: res => {
                 //获取用户授权       
@@ -48,11 +47,13 @@ Page({
                                                     openid: res.data.user['openid'],
                                                     money: res.data.user['orderMoney']
                                                 })
+                                                console.log
                                             } else {
                                                 wx.hideLoading()
                                                 wx.showToast({
                                                     title: '数据获取失败',
-                                                    image: 'assets/image/cry'
+                                                    image: 'assets/image/cry',
+                                                    mask:true
                                                 })
 
                                             }
@@ -61,7 +62,8 @@ Page({
                                             wx.hideLoading()
                                             wx.showToast({
                                                 title: '网络加载失败',
-                                                image: 'assets/image/cry'
+                                                image: 'assets/image/cry',
+                                                mask: true
                                             })
                                         }
                                     })
@@ -80,14 +82,6 @@ Page({
     onReady: function() {
 
     },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function() {
-
-    },
-
     /**
      * 生命周期函数--监听页面隐藏
      */

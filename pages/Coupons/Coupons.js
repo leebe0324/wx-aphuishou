@@ -8,7 +8,7 @@ Page({
     data: {
         discount: '',
         openid: '',
-        show:false
+        show:true
     },
 
     /**
@@ -45,7 +45,7 @@ Page({
                     {
                         console.log('有数据')
                         this.setData({
-                            show: true
+                            show: false
                         })
                   
                     }
@@ -57,7 +57,8 @@ Page({
                     wx.showToast({
                         title: '优惠券加载失败',
                         image: '../../assets/image/cry.png',
-                        duration: 2000
+                        duration: 2000,
+                        mask:true
                     })
                 }
             },
@@ -65,7 +66,8 @@ Page({
                 wx.showToast({
                     title: '请求失败',
                     image: '../../assets/image/cry.png',
-                    duration: 2000
+                    duration: 2000,
+                    mask:true
                 })
             }
         })

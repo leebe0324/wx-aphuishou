@@ -18,6 +18,7 @@ App({
 
         wx.showLoading({
             title: '',
+            mask:true
         })
         // 登录
         wx.login({

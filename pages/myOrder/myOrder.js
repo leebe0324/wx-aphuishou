@@ -1,7 +1,6 @@
 const order = 'https://www.innothinking.cn/order'
 const cancelOrder = 'https://www.innothinking.cn/order/cancelOrder'
 Page({
-
     /**
      * 页面的初始数据
      */
@@ -13,7 +12,7 @@ Page({
         active: 1,
         finishedOrder: [],
         unpickOrder: [],
-        show: false
+        show: true
     },
 
     /**
@@ -42,7 +41,7 @@ Page({
 
                     } else {
                         this.setData({
-                            show: true
+                            show: false
                         })
 
                     }
@@ -76,11 +75,11 @@ Page({
         if (this.data.unpickOrder.length == 0) {
 
             this.setData({
-                show: false
+                show: true
             })
         } else {
             this.setData({
-                show: true
+                show: false
             })
 
         }
@@ -101,11 +100,11 @@ Page({
         if (this.data.finishedOrder.length == 0) {
             console.log('已回收没数据', this.data.finishedOrder)
             this.setData({
-                show: false
+                show: true
             })
         } else {
             this.setData({
-                show: true
+                show: false
             })
             console.log('已回收有数据', this.data.finishedOrder)
         }
@@ -142,7 +141,8 @@ Page({
                                 wx.showToast({
                                     title: '取消成功',
                                     image: '../../assets/image/smlie.png',
-                                    duration: 2000
+                                    duration: 2000,
+                                    mask:true
                                 })
                                 setTimeout(function() {
                                     wx.navigateBack({

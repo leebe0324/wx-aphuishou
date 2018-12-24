@@ -33,12 +33,16 @@ Page({
         v1: '',
         v2: '',
         v3: '',
-        phone: ''
+        phone: '',
+        placeHolder:'',
+        placeHolderForPhone:''
 
     },
+
     onLoad: function() {
         wx.showLoading({
             title: '加载中',
+            mask: true
         })
         wx.login({
             success: res => {
@@ -70,8 +74,10 @@ Page({
                                                 openid: res.data.openid
                                             })
                                             console.log('首页存openid', this.data.openid)
+                                            wx.hideLoading()
                                         },
                                         fail: erro => {
+                                            wx.hideLoading()
                                             wx.showToast({
                                                 title: '网络加载失败',
                                                 image: 'assets/image/cry'
@@ -83,6 +89,7 @@ Page({
 
                         } else {
                             //没有授权
+                            wx.hideLoading()
                             console.log('首页没授权')
                         }
                     }
@@ -172,10 +179,12 @@ Page({
             enddate: endDate,
             starttime: hours + ':' + min,
             endtime: endtime + ':' + min,
-            endstart: endtime + ':' + min
+            endstart: endtime + ':' + min,
+            placeHolderForPhone: '请输入手机号',
+            placeHolder: '1'
         })
     },
-    //格式化星期(启用
+    //格式化星期(弃用)
     valday: function(day) {
         switch (day) {
             case 1:
@@ -203,9 +212,7 @@ Page({
     },
     //点击年月日
     bindDateChange: function(e) {
-
         var _this = this
-
         function getZ(v) {
             v = parseInt(v);
             return v < 10 ? '0' + v : v
@@ -325,7 +332,6 @@ Page({
         //正则表达式
         var reg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
         let v1 = this.data.v1
-        console.log('小区？', this.data.v2)
         let v2 = this.data.v2
         let v3 = this.data.v3
         let v4 = this.data.phone
@@ -337,19 +343,22 @@ Page({
             wx.showToast({
                 title: '请选择分类',
                 image: '../../assets/image/cry.png',
-                duration: 2000
+                duration: 2000,
+                mask: true
             })
         } else if (v1 === '' || v2 === '' || v3 === '') {
             wx.showToast({
                 title: '请填写地址信息',
                 image: '../../assets/image/cry.png',
-                duration: 2000
+                duration: 2000,
+                mask: true
             })
         } else if (!flage) {
             wx.showToast({
                 title: '请填写正确手机号',
                 image: '../../assets/image/cry.png',
-                duration: 2000
+                duration: 2000,
+                mask: true
             })
             return
         } else {
@@ -384,12 +393,32 @@ Page({
                         })
 
                     } else {
-                        wx.showToast({
-                            title: '预约失败',
-                            image: '../../assets/image/cry.png',
-                            duration: 2000
+                        var openid=this.data.openid
+                        console.log('有订单的时候openid', openid)
+                        wx.showModal({
+                            title: '提示',
+                            content: res.data.msg,
+                            showCancel: false,
+                            success(res) {
+                                if (res.confirm) {
+                                    console.log('用户点击确定')
+                                    wx.navigateTo({
+                                        url: '../myOrder/myOrder?openid='+openid,
+                                    })
+                                }
+                            }
                         })
+                     
                     }
+
+                },fail:(erro)=>
+                {
+                    wx.showToast({
+                        title: '预约失败',
+                        image: '../../assets/image/cry.png',
+                        duration: 2000,
+                        mask: true
+                    })
 
                 }
 
