@@ -81,7 +81,7 @@
 
 .cjpop {
     width: 540rpx;
-    height: 270rpx;
+    height: 285rpx;
     background: #fff;
     border-radius: 24rpx;
     margin: 400rpx auto 0rpx;
@@ -96,10 +96,18 @@
 }
 
 .cjquan {
-    font-size: 36rpx;
+    font-size: 32rpx;
     line-height: 2.4;
     text-align: center;
     display: block;
+    color: #60d631;
+}
+
+.remark{
+    display: block;
+    text-align: center;
+    font-size: 20rpx;
+    color: #aaaaaa;
 }
 
 .cjpopbutton {

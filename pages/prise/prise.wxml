@@ -8,6 +8,7 @@
     <view class="cjpop">
     <text class="cjtitle">恭喜您获得</text>
     <text class="cjquan">{{title}}门店优惠券</text>
+    <text class='remark'>完成当前订单后方可进行再次下单！</text>
     <button class="cjpopbutton"  bindtap="discount">去查看</button>
     </view>
   </view>
