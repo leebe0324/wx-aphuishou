@@ -1,7 +1,7 @@
 <!--pages/index/index.wxml-->
 
 <view>
-    <swiper indicator-dots="{{indicatorDots}}" class='swiper' autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="bindEnvironmental">
+    <swiper indicator-dots="{{indicatorDots}}" class='swiper' autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindtap="bindEnvironmental">
         <block wx:for="{{imgUrls}}" wx:key="">
             <swiper-item>
                 <image src="{{item}}" class="slide-image"/>

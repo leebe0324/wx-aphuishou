@@ -39,7 +39,7 @@ Page({
 
     },
 
-    onLoad: function() {
+    onShow: function() {
         wx.showLoading({
             title: '加载中',
             mask: true

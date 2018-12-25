@@ -23,7 +23,6 @@ App({
         // 登录
         wx.login({
             success: res => {
-
                 if (res.code) {
 
                     //获取用户授权       
@@ -93,6 +92,13 @@ App({
 
                 }
 
+            }, fail: erro => {
+                wx.hideLoading()
+                wx.showToast({
+                    title: '网络请求失败',
+                    image: '../../assets/image/cry.png',
+                    duration: 2000
+                })
             }
         })
         // 获取用户信息

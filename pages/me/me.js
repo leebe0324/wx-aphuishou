@@ -51,9 +51,9 @@ Page({
                                             } else {
                                                 wx.hideLoading()
                                                 wx.showToast({
-                                                    title: '数据获取失败',
-                                                    image: 'assets/image/cry',
-                                                    mask:true
+                                                    title: '网络请求失败',
+                                                    image: '../../assets/image/cry.png',
+                                                    duration: 2000
                                                 })
 
                                             }
@@ -61,16 +61,31 @@ Page({
                                         fail: erro => {
                                             wx.hideLoading()
                                             wx.showToast({
-                                                title: '网络加载失败',
-                                                image: 'assets/image/cry',
-                                                mask: true
+                                                title: '网络请求失败',
+                                                image: '../../assets/image/cry.png',
+                                                duration: 2000
                                             })
                                         }
                                     })
                                 }
                             })
                         }
+                    }, fail: erro => {
+                        wx.hideLoading()
+                        wx.showToast({
+                            title: '网络请求失败',
+                            image: '../../assets/image/cry.png',
+                            duration: 2000
+                        })
                     }
+                })
+            },fail:erro=>
+            {
+                wx.hideLoading()
+                wx.showToast({
+                    title: '网络请求失败',
+                    image: '../../assets/image/cry.png',
+                    duration: 2000
                 })
             }
         })
