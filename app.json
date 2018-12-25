@@ -7,7 +7,8 @@
         "pages/prise/prise",
         "pages/Coupons/Coupons",
         "pages/myOrder/myOrder",
-        "pages/Environmental/Environmental"
+        "pages/Environmental/Environmental",
+        "pages/Feedback/Feedback"
     ],
     "window": {
         "navigationBarBackgroundColor": "#F8F8F8",

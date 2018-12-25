@@ -1,0 +1,9 @@
+/* pages/Feedback/Feedback.wxss */
+view{
+    padding: 15rpx 20rpx; 
+}
+textarea{
+    width: 100%;
+    margin-bottom: 20rpx;
+    border: 1rpx solid #cccccc;
+}
