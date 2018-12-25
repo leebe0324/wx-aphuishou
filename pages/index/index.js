@@ -257,6 +257,15 @@ Page({
             endtime: e.detail.value
         })
     },
+
+    // banner点击跳转
+    bindEnvironmental: function () {
+        console.log('111');
+        wx.navigateTo({
+            url: '../Environmental/Environmental',
+        })
+    },
+
     write: function(e) {
 
         let a = e.target.dataset.id

@@ -1,13 +1,14 @@
 {
-  "pages":[
-    "pages/AppLunchPages/start",
-    "pages/index/index",
-    "pages/me/me",
-    "pages/orderSuccess/orderSuccess",
-    "pages/prise/prise",
-    "pages/Coupons/Coupons",
-    "pages/myOrder/myOrder"
-  ],
+    "pages": [
+        "pages/AppLunchPages/start",
+        "pages/index/index",
+        "pages/me/me",
+        "pages/orderSuccess/orderSuccess",
+        "pages/prise/prise",
+        "pages/Coupons/Coupons",
+        "pages/myOrder/myOrder",
+        "pages/Environmental/Environmental"
+    ],
     "window": {
         "navigationBarBackgroundColor": "#F8F8F8",
         "navigationBarTextStyle": "black",
