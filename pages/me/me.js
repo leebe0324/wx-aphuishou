@@ -6,7 +6,8 @@ Page({
      */
     data: {
         openid: '',
-        money: ''
+        money: '',
+        nickName:''
 
     },
 
@@ -45,9 +46,10 @@ Page({
                                                 console.log('我的页面获取用户信息', res)
                                                 this.setData({
                                                     openid: res.data.user['openid'],
-                                                    money: res.data.user['orderMoney']
+                                                    money: res.data.user['orderMoney'],
+                                                    nickName: res.data.user['nickname']
                                                 })
-                                                console.log
+                                                console.log('+++++',this.data.nickName)
                                             } else {
                                                 wx.hideLoading()
                                                 wx.showToast({

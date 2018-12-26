@@ -128,11 +128,13 @@ Page({
                 }
             },
             fail: res => {
+                wx.hideLoading()
                 wx.showToast({
                     title: '网络请求失败',
                     image: '../../assets/image/cry.png',
                     duration: 2000
                 })
+
             }
         })
         //初始化回收时间
