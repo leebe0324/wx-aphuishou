@@ -2,7 +2,7 @@
 <view>
     <form>
         <!-- <input type='text' placeholder='请说出你的想法' class='feedback'></input> -->
-        <input bindinput='context' placeholder='请提出您的宝贵建议' ></input>
+        <textarea placeholder='请提出您的宝贵建议' bindinput='context'> </textarea> 
         <button  bindtap='faceSubmit'>提交</button>
     </form>
 </view>

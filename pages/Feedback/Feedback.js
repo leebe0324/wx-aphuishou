@@ -38,79 +38,69 @@ Page({
 
     faceSubmit:function()
     {
+                    console.log('检查用户名', this.data.nickname)
+                    console.log('检查内容', this.data.content)
 
-        console.log('检查用户名',this.data.nickname)
-        console.log('检查内容', this.data.content)
-        wx.showLoading({
-            title: '',
-            mask: true
-        })
-        if(this.data.content.length==0)
-        {
-            console.log('请输入内容')
-            wx.showToast({
-                title: '请输入内容',
-                image: '../../assets/image/smlie.png',
-                duration: 2000,
-                mask: true
-            })
-        }else
-        {
-            wx.request({
-                url: feedApi,
-                method: 'POST',
-                data: {
-                    openid: this.data.openid,
-                    nickname: this.data.nickname,
-                    context: this.data.content
-                },
-                header: {
-                    'content-type': 'application/json'
-                },
-                success: res => {
-                    console.log('提交返回', res)
-                    if(res.data.code==1)
-                    {
+                    if (this.data.content.length == 0) {
+                        console.log('请输入内容')
                         wx.showToast({
-                            title: res.data.msg,
+                            title: '请输入内容',
                             image: '../../assets/image/smlie.png',
                             duration: 2000,
                             mask: true
                         })
-                        setTimeout(function () {
-                            wx.navigateBack({
-                                delta: 1
-                            })
-                        }, 2000)
-                        wx.hideLoading()
-
-                    }else
-                    {
-                        wx.showToast({
-                            title: '提交失败',
-                            image: '../../assets/image/cry.png',
-                            duration: 2000,
+                    } else {
+                        wx.showLoading({
+                            title: '',
                             mask: true
                         })
-                        wx.hideLoading()
+                        wx.request({
+                            url: feedApi,
+                            method: 'POST',
+                            data: {
+                                openid: this.data.openid,
+                                nickname: this.data.nickname,
+                                context: this.data.content
+                            },
+                            header: {
+                                'content-type': 'application/json'
+                            },
+                            success: res => {
+                                console.log('提交返回', res)
+                                if (res.data.code == 1) {
 
+                                    wx.hideLoading()
+                                    wx.showToast({
+                                        title: res.data.msg,
+                                        image: '../../assets/image/smlie.png',
+                                        duration: 2000,
+                                        mask: true
+                                    })
+                                    setTimeout(function () {
+                                        wx.navigateBack({
+                                            delta: 1
+                                        })
+                                    }, 2000)
+                                } else {
+                                    wx.hideLoading()
+                                    wx.showToast({
+                                        title: '提交失败',
+                                        image: '../../assets/image/cry.png',
+                                        duration: 2000,
+                                        mask: true
+                                    })
+                                }
+                            }, fail: erro => {
+                                wx.hideLoading()
+                                wx.showToast({
+                                    title: '网络异常',
+                                    image: '../../assets/image/cry.png',
+                                    duration: 2000,
+                                    mask: true
+                                })
+                            }
+                        })
                     }
-                },fail:erro=>
-                {
-                    wx.showToast({
-                        title: '网络异常',
-                        image: '../../assets/image/cry.png',
-                        duration: 2000,
-                        mask: true
-                    })
-
-                }
-            })
-
-        }
-
-  
-
     },
 
     /**
