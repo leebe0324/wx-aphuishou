@@ -63,7 +63,7 @@ Page({
                                 context: this.data.content
                             },
                             header: {
-                                'content-type': 'application/json'
+                              'content-type': 'application/x-www-form-urlencoded'
                             },
                             success: res => {
                                 console.log('提交返回', res)
