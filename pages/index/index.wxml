@@ -50,16 +50,16 @@
                     {{address[index]}}
                 </view>
             </picker>
-            <input type='text' placeholder='{{placeHolder}}' bindinput="write" data-id="1" placeholder-class="place-holder" ></input>
+            <input type='number' placeholder='{{placeHolder}}' bindinput="write" data-id="1" placeholder-class="place-holder"  maxlength='3'></input>
             <text>栋</text>
-            <input type='text' placeholder='{{placeHolder}}' bindinput="write" data-id="2" placeholder-class="place-holder" adjust-position='true'></input>
+            <input type='number' placeholder='{{placeHolder}}' bindinput="write" data-id="2" placeholder-class="place-holder" adjust-position='true' maxlength='3'></input>
             <text>层</text>
-            <input type='text' placeholder='{{placeHolder}}'bindinput="write" data-id="3" placeholder-class="place-holder" adjust-position='true'></input>
+            <input type='number' placeholder='{{placeHolder}}'bindinput="write" data-id="3" placeholder-class="place-holder" adjust-position='true' maxlength='3'></input>
             <text>房间号</text>
         </view>
         <view class='section phoneee'>
             <text>预留手机</text>
-            <input type='text' placeholder='{{placeHolderForPhone}}' class='phone' bindinput="write" data-id="4" placeholder-class="place-holder" adjust-position='true'></input>
+            <input type='number' placeholder='{{placeHolderForPhone}}' class='phone' bindinput="write" data-id="4" placeholder-class="place-holder" adjust-position='true' ></input>
         </view>
         <view class='section bnone'>
             <button bindtap='order'>预约回收</button>
