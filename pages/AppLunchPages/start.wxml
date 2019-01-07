@@ -2,7 +2,7 @@
 <view class="start">
   <button open-type="getUserInfo" wx:if="{{!auth}}" class="auth" bindtap="enter">允许授权</button>
 
-    <button wx:if="{{auth}}"  class="auth" bindtap="enter">立即进入</button>
+    <!-- <button wx:if="{{auth}}"  class="auth" bindtap="enter">立即进入</button> -->
     <image src="http://static.glabcms.stoyard.com/object/20180625/gea0t56n8n.png" mode="widthFix" class="start-img" bindtap="enter"></image>
 </view> 
 

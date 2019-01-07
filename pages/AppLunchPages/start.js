@@ -24,6 +24,18 @@ Page({
                         auth: true
                     })
 
+                   console.log('已授权++++++')
+
+                    setTimeout(function () {
+                        console.log("延迟调用============")
+                        wx.switchTab({
+                            url: '/pages/index/index',
+                        })
+
+                    }, 1000)
+
+                 
+
                 }else
                 {
                    _this.setData({
@@ -45,6 +57,8 @@ Page({
                 console.log('状态',this.data.auth)
             }
         })
+
+
     },
     enter: function () {
         wx.getSetting({

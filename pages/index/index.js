@@ -106,7 +106,6 @@ Page({
             success: res => {
                 if (res.data.msg == '请求页面数据成功') {
                     var imageArr = res.data.banner
-
                     var list = res.data.category //分类
                     var addressList = [] //小区地址
                     var v = [] //分类
@@ -226,7 +225,9 @@ Page({
         nowMonth = getZ(nowMonth);
         //获取当前日
         let ndate = nowDate.getDate();
+       
         ndate = getZ(ndate);
+        console.log('获取的时间', ndate)
         let nowStr = nowYear + '-' + nowMonth + '-' + ndate
         if (v === nowStr) {
             //如果选择的日期等于当前日期啥都不做
@@ -245,8 +246,10 @@ Page({
     //开始时间
     bindstartTimeChange: function(e) {
         let a = e.detail.value
+        console.log('时间选择',a)
         let b = a.split(':')
-        let endtime = (parseInt(b[0]) + 1) + ':' + b[1]
+        let endtime = '0'+(parseInt(b[0]) + 1)+ ':' + b[1]
+        console.log('结束时间',endtime)
         this.setData({
             starttime: e.detail.value,
             endtime: endtime,
@@ -350,6 +353,7 @@ Page({
         let v6 = this.data.starttime
         let v7 = this.data.endtime
         var flage = reg.test(v4)
+        console.log('分类数据',this.data.navSelect)
         if (this.data.navSelect === '') {
             wx.showToast({
                 title: '请选择分类',
