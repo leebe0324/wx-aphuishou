@@ -44,8 +44,8 @@
             </picker>
             <view class='clear'></view>
         </view>
-        <view class='section'>
-            <picker bindchange='bindAddress' value='{{index}}' range='{{address}}'>
+        <view class='section phoneee'>
+            <!-- <picker bindchange='bindAddress' value='{{index}}' range='{{address}}'>
                 <view class='picker'>
                     {{address[index]}}
                 </view>
@@ -55,10 +55,12 @@
             <input type='number' placeholder='{{placeHolder}}' bindinput="write" data-id="2" placeholder-class="place-holder" adjust-position='true' maxlength='3'></input>
             <text>层</text>
             <input type='number' placeholder='{{placeHolder}}'bindinput="write" data-id="3" placeholder-class="place-holder" adjust-position='true' maxlength='3'></input>
-            <text>房间号</text>
+            <text>房间号</text> -->
+            <text>回收地址:</text>
+            <input type='text' placeholder='请输入您的地址' class='phone' placeholder-class="place-holder"></input>
         </view>
         <view class='section phoneee'>
-            <text>预留手机</text>
+            <text>预留手机:</text>
             <input type='number' placeholder='{{placeHolderForPhone}}' class='phone' bindinput="write" data-id="4" placeholder-class="place-holder" adjust-position='true' ></input>
         </view>
         <view class='section bnone'>
