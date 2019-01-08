@@ -35,11 +35,30 @@ Page({
         v3: '',
         phone: '',
         placeHolder:'',
-        placeHolderForPhone:''
-
+        placeHolderForPhone:'',
+        userAddress:'',//用户地址
     },
 
-    onShow: function() {
+    onLoad: function() {
+
+        try {
+            const value = wx.getStorageSync('addr')
+            if (value) {
+               this.setData({
+                   userAddress:value
+               })
+            }else
+            {
+                this.setData({
+                    userAddress: ''
+                })
+            }
+        } catch (e) {
+            wx.showToast({
+                title: '缓存获取失败',
+                image: 'assets/image/cry'
+            })
+        }
         wx.showLoading({
             title: '加载中',
             mask: true
@@ -50,10 +69,8 @@ Page({
                 wx.getSetting({
                     success: result => {
                         if (result.authSetting['scope.userInfo']) {
-                            console.log('首页授权了')
                             wx.getUserInfo({
                                 success: r => {
-                                    console.log('首页用户信息', r)
                                     //请求后台换取openid
                                     wx.request({
                                         url: loginApi,
@@ -67,13 +84,12 @@ Page({
                                             'content-type': 'application/json'
                                         },
                                         success: res => {
-                                            console.log('首页返回用户信息', res)
                                             wx.removeStorageSync('openid')
                                             wx.setStorageSync('openid', res.data.openid)
                                             this.setData({
                                                 openid: res.data.openid
                                             })
-                                            console.log('首页存openid', this.data.openid)
+
                                             wx.hideLoading()
                                         },
                                         fail: erro => {
@@ -90,7 +106,6 @@ Page({
                         } else {
                             //没有授权
                             wx.hideLoading()
-                            console.log('首页没授权')
                         }
                     }
                 })
@@ -104,6 +119,7 @@ Page({
                 'content-type': 'application/json' // 默认值
             },
             success: res => {
+                console.log('首页数据',res)
                 if (res.data.msg == '请求页面数据成功') {
                     var imageArr = res.data.banner
                     var list = res.data.category //分类
@@ -144,7 +160,6 @@ Page({
         }
         //获取当前日期
         let d = new Date();
-        console.log('当前日期', d);
         let y = d.getFullYear();
         let _y = y;
         //月份+1，起始下表为0
@@ -157,7 +172,6 @@ Page({
         }
         //格式化
         _m = getZ(_m);
-        console.log('===', _m);
         _y = getZ(_y);
         //获取当前日，请查看utils文件utils.js
         let date = d.getDate();
@@ -225,9 +239,7 @@ Page({
         nowMonth = getZ(nowMonth);
         //获取当前日
         let ndate = nowDate.getDate();
-       
         ndate = getZ(ndate);
-        console.log('获取的时间', ndate)
         let nowStr = nowYear + '-' + nowMonth + '-' + ndate
         if (v === nowStr) {
             //如果选择的日期等于当前日期啥都不做
@@ -237,7 +249,7 @@ Page({
             // let day = this.valday(week.getDay());
             this.setData({
                 date: splitA[0] + '年' + splitA[1] + '月' + splitA[2] + '日 ',
-                starttime: '07:00',
+                starttime: '7:00',
                 endtime: '8:00',
                 endstart: '8:00'
             })
@@ -246,10 +258,8 @@ Page({
     //开始时间
     bindstartTimeChange: function(e) {
         let a = e.detail.value
-        console.log('时间选择',a)
         let b = a.split(':')
-        let endtime = '0'+(parseInt(b[0]) + 1)+ ':' + b[1]
-        console.log('结束时间',endtime)
+        let endtime = (parseInt(b[0]) + 1)+ ':' + b[1]
         this.setData({
             starttime: e.detail.value,
             endtime: endtime,
@@ -272,32 +282,14 @@ Page({
     },
 
     write: function(e) {
-
-        let a = e.target.dataset.id
-        switch (a) {
-            case '1':
-                this.setData({
-                    v1: e.detail.value
-                })
-                break;
-            case '2':
-                this.setData({
-                    v2: e.detail.value
-                })
-                break;
-            case '3':
-                this.setData({
-                    v3: e.detail.value
-                })
-                break;
-            case '4':
-                this.setData({
-                    phone: e.detail.value
-                })
-
-                break;
-        }
-
+        this.setData({
+            phone:e.detail.value
+        })
+    },
+    address: function (e) {
+        this.setData({
+            v1: e.detail.value
+        })
     },
     bindChoice: function(e) {
         //获取当前点击的索引下标
@@ -319,7 +311,6 @@ Page({
                 navSelect: selectedArr
             })
         } else {
-            console.log("没有")
             //讲id字符串变成id数组
             let e = this.data.navSelect.split(',')
             //判断当前点击取消的id在不在e[]数组里面
@@ -346,14 +337,13 @@ Page({
         //正则表达式
         var reg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
         let v1 = this.data.v1
-        let v2 = this.data.v2
-        let v3 = this.data.v3
+        // let v2 = this.data.v2
+        // let v3 = this.data.v3
         let v4 = this.data.phone
         let v5 = this.data.date
         let v6 = this.data.starttime
         let v7 = this.data.endtime
         var flage = reg.test(v4)
-        console.log('分类数据',this.data.navSelect)
         if (this.data.navSelect === '') {
             wx.showToast({
                 title: '请选择分类',
@@ -361,7 +351,7 @@ Page({
                 duration: 2000,
                 mask: true
             })
-        } else if (v1 === '' || v2 === '' || v3 === '') {
+        } else if (v1 === '' ) {
             wx.showToast({
                 title: '请填写地址信息',
                 image: '../../assets/image/cry.png',
@@ -377,13 +367,6 @@ Page({
             })
             return
         } else {
-            if (this.data.comm === '') {
-                console.log('默认值', this.data.address[0])
-                this.setData({
-                    comm: this.data.address[0]
-                })
-
-            }
             wx.request({
                 url: createOrder,
                 method: 'post',
@@ -391,8 +374,8 @@ Page({
                     openid: this.data.openid,
                     categoryIds: this.data.navSelect,
                     pickTime: v5 + v6 + '-' + v7,
-                    address: v1 + '栋楼' + v2 + '层' + v3 + '号',
-                    communityName: this.data.comm,
+                    address: v1,
+                    communityName: '',
                     phoneNumber: v4
                 },
                 header: {
@@ -400,14 +383,22 @@ Page({
                 },
                 success: (res) => {
                     console.log('回收', res)
-
                     if (res.data.code == 1) {
-
+                        wx.setStorageSync('addr', v1)
+                        console.log('下单存地址', wx.getStorageSync('addr'))
                         wx.navigateTo({
                             url: '../orderSuccess/orderSuccess?orderNumber=' + res.data.orderNumber + '&openid=' + this.data.openid,
                         })
-
                     } else {
+                        if(res.data.msg=='创建订单失败')
+                        {
+                            wx.showToast({
+                                title: '预约失败',
+                                image: '../../assets/image/cry.png',
+                                duration: 2000,
+                                mask: true
+                            })
+                        }
                         var openid=this.data.openid
                         console.log('有订单的时候openid', openid)
                         wx.showModal({
@@ -422,10 +413,8 @@ Page({
                                     })
                                 }
                             }
-                        })
-                     
+                        })   
                     }
-
                 },fail:(erro)=>
                 {
                     wx.showToast({
@@ -434,11 +423,8 @@ Page({
                         duration: 2000,
                         mask: true
                     })
-
                 }
-
             })
-
         }
     },
 })
