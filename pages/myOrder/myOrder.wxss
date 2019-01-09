@@ -36,6 +36,7 @@ page {
 
 .myOrderadd > view:nth-child(2) {
     line-height: 50rpx;
+    width: 50%;
 }
 
 .myOrderadd > view:nth-child(3) {

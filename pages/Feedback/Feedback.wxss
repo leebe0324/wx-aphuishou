@@ -3,7 +3,8 @@ view{
     padding: 15rpx 20rpx; 
 }
 textarea{
-    width: 100%;
-    margin-bottom: 20rpx;
+    width: 97%;
+    margin: 0 auto 20rpx;
     border: 1rpx solid #cccccc;
+    padding: 10rpx;
 }

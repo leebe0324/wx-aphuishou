@@ -22,7 +22,7 @@
     </navigator>
     <navigator url="/pages/Feedback/Feedback?openid={{openid}}&nickname={{nickName}}">
         <view class='myorder'>
-            <icon class='iconfont icon-youhuiquan' style='color:#ff9a76'></icon>
+            <icon class='iconfont icon-liuyan-fill' style='color:rgb(113, 146, 229)'></icon>
             <text>意见反馈</text>
             <icon class='iconfont icon-you rr'></icon>
         </view>

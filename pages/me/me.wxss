@@ -49,7 +49,6 @@
     font-size: 32rpx;
     color: #999999;
 }
-
 .myorder icon:last-child{
     position: absolute;
     right: 46rpx;
