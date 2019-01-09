@@ -27,6 +27,8 @@ Page({
   },
   //抽奖点击
     getPrise() {
+
+        console.log('订单编号',this.data.orderNumber)
         var _this=this
 
         this.setData({

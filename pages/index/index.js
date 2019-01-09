@@ -314,16 +314,6 @@ Page({
       v1: aaa
     })
   },
-
-  lostfocus:function(e)
-  {
-    var aaa = e.detail.value.replace(/\s+/g, '')
-    console.log('地址信息', aaa)
-    this.setData({
-      v1: aaa
-    })
-
-  },
   bindChoice: function(e) {
     //获取当前点击的索引下标
     let ind = e.target.dataset.id;
@@ -427,31 +417,11 @@ Page({
             wx.setStorageSync('phone', v4)
             console.log('下单存地址', wx.getStorageSync('addr'))
             console.log('下单存手机号', wx.getStorageSync('phone'))
-            wx.request({
-                url: getAllCoupons,
-                method: 'get',
-                header: {
-                    'content-type': 'application/json'
-                }, success: (res) => 
-                {
-                    wx.hideLoading()
-                    if(res.data.msg=='获取所有优惠券成功')
-                    {
-                        wx.navigateTo({
-                            url: '../orderSuccess/orderSuccess?orderNumber=' + res.data.orderNumber + '&openid=' + this.data.openid,
+              wx.hideLoading()
+              wx.navigateTo({
+                  url: '../orderSuccess/orderSuccess?orderNumber=' + res.data.orderNumber + '&openid=' + this.data.openid,
 
-                        })
-                  
-                    }else
-                    {
-                        wx.navigateTo({
-                            url: 'pages/Coupons/Coupons?openid' + this.data.openid,
-                        })
-
-                    }
-                }
-             
-            })
+              })
           } else {
               wx.hideLoading()
             if (res.data.msg == '创建订单失败') {

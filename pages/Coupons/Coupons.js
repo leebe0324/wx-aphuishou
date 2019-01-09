@@ -32,6 +32,7 @@ Page({
                 'content-type': 'application/json'
             },
             success: res => {
+                console.log('优惠券信息',res.data)
                 if (res.data.code == 1) {
 
                     this.setData({
