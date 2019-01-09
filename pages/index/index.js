@@ -41,6 +41,7 @@ Page({
 
   onLoad: function() {
 
+    //判断地址缓存
     try {
       const value = wx.getStorageSync('addr')
       if (value) {
@@ -50,6 +51,24 @@ Page({
       } else {
         this.setData({
           v1: ''
+        })
+      }
+    } catch (e) {
+      wx.showToast({
+        title: '缓存获取失败',
+        image: 'assets/image/cry'
+      })
+    }
+    //判断手机号缓存
+    try {
+      const value = wx.getStorageSync('phone')
+      if (value) {
+        this.setData({
+          phone: value
+        })
+      } else {
+        this.setData({
+          phone: placeHolderForPhone
         })
       }
     } catch (e) {
@@ -287,9 +306,22 @@ Page({
     })
   },
   address: function(e) {
+
+    var aaa = e.detail.value.replace(/\s+/g, '')
+    console.log('地址信息',aaa)
     this.setData({
-      v1: e.detail.value
+      v1: aaa
     })
+  },
+
+  lostfocus:function(e)
+  {
+    var aaa = e.detail.value.replace(/\s+/g, '')
+    console.log('地址信息', aaa)
+    this.setData({
+      v1: aaa
+    })
+
   },
   bindChoice: function(e) {
     //获取当前点击的索引下标
@@ -387,8 +419,11 @@ Page({
         success: (res) => {
           console.log('回收', res)
           if (res.data.code == 1) {
+            
             wx.setStorageSync('addr', v1)
+            wx.setStorageSync('phone', v4)
             console.log('下单存地址', wx.getStorageSync('addr'))
+            console.log('下单存手机号', wx.getStorageSync('phone'))
             wx.navigateTo({
               url: '../orderSuccess/orderSuccess?orderNumber=' + res.data.orderNumber + '&openid=' + this.data.openid,
             })
