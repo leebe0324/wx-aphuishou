@@ -3,6 +3,7 @@
 const loginApi = 'https://www.innothinking.cn/login/getCode2Session'
 const getPageMsgApi = 'https://www.innothinking.cn/login/getPageMsg'
 const createOrder = 'https://www.innothinking.cn/order/createOrder'
+const getAllCoupons ='https://www.innothinking.cn/coupon/getAll'
 const app = getApp()
 Page({
   data: {
@@ -366,6 +367,7 @@ Page({
   },
 
   order: function() {
+
     //正则表达式
     var reg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
     let v1 = this.data.v1
@@ -399,9 +401,10 @@ Page({
       })
       return
     } else {
-
-      let addressu = this.data.userAddress
-
+        wx.showLoading({
+            title: '加载中',
+            mask: true
+        })
       wx.request({
         url: createOrder,
         method: 'post',
@@ -424,10 +427,33 @@ Page({
             wx.setStorageSync('phone', v4)
             console.log('下单存地址', wx.getStorageSync('addr'))
             console.log('下单存手机号', wx.getStorageSync('phone'))
-            wx.navigateTo({
-              url: '../orderSuccess/orderSuccess?orderNumber=' + res.data.orderNumber + '&openid=' + this.data.openid,
+            wx.request({
+                url: getAllCoupons,
+                method: 'get',
+                header: {
+                    'content-type': 'application/json'
+                }, success: (res) => 
+                {
+                    wx.hideLoading()
+                    if(res.data.msg=='获取所有优惠券成功')
+                    {
+                        wx.navigateTo({
+                            url: '../orderSuccess/orderSuccess?orderNumber=' + res.data.orderNumber + '&openid=' + this.data.openid,
+
+                        })
+                  
+                    }else
+                    {
+                        wx.navigateTo({
+                            url: 'pages/Coupons/Coupons?openid' + this.data.openid,
+                        })
+
+                    }
+                }
+             
             })
           } else {
+              wx.hideLoading()
             if (res.data.msg == '创建订单失败') {
               wx.showToast({
                 title: '预约失败',
