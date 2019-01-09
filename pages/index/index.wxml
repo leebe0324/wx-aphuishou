@@ -57,7 +57,7 @@
             <input type='number' placeholder='{{placeHolder}}'bindinput="write" data-id="3" placeholder-class="place-holder" adjust-position='true' maxlength='3'></input>
             <text>房间号</text> -->
             <text>回收地址:</text>
-            <input type='text' placeholder='请输入您的地址' class='phone'   bindinput='address' maxlength='25' value='{{userAddress}}'></input>
+            <input type='text' placeholder='请输入您的地址' class='phone'   bindinput='address' maxlength='25' value='{{v1}}'></input>
         </view>
         <view class='section phoneee'>
             <text>预留手机:</text>
