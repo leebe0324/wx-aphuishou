@@ -3,7 +3,7 @@
 const loginApi = 'https://www.innothinking.cn/login/getCode2Session'
 const getPageMsgApi = 'https://www.innothinking.cn/login/getPageMsg'
 const createOrder = 'https://www.innothinking.cn/order/createOrder'
-const getAllCoupons ='https://www.innothinking.cn/coupon/getAll'
+const getAllCoupons = 'https://www.innothinking.cn/coupon/getAll'
 const app = getApp()
 Page({
   data: {
@@ -309,7 +309,7 @@ Page({
   address: function(e) {
 
     var aaa = e.detail.value.replace(/\s+/g, '')
-    console.log('地址信息',aaa)
+    console.log('地址信息', aaa)
     this.setData({
       v1: aaa
     })
@@ -359,7 +359,7 @@ Page({
   order: function() {
 
     //正则表达式
-    var reg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
+    var reg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1})|(16[0-9]{1})|(14[0-9]{1})|(19[0-9]{1})))+\d{8})$/;
     let v1 = this.data.v1
     // let v2 = this.data.v2
     // let v3 = this.data.v3
@@ -391,10 +391,10 @@ Page({
       })
       return
     } else {
-        wx.showLoading({
-            title: '加载中',
-            mask: true
-        })
+      wx.showLoading({
+        title: '加载中',
+        mask: true
+      })
       wx.request({
         url: createOrder,
         method: 'post',
@@ -412,18 +412,18 @@ Page({
         success: (res) => {
           console.log('回收', res)
           if (res.data.code == 1) {
-            
+
             wx.setStorageSync('addr', v1)
             wx.setStorageSync('phone', v4)
             console.log('下单存地址', wx.getStorageSync('addr'))
             console.log('下单存手机号', wx.getStorageSync('phone'))
-              wx.hideLoading()
-              wx.navigateTo({
-                  url: '../orderSuccess/orderSuccess?orderNumber=' + res.data.orderNumber + '&openid=' + this.data.openid,
+            wx.hideLoading()
+            wx.navigateTo({
+              url: '../orderSuccess/orderSuccess?orderNumber=' + res.data.orderNumber + '&openid=' + this.data.openid,
 
-              })
+            })
           } else {
-              wx.hideLoading()
+            wx.hideLoading()
             if (res.data.msg == '创建订单失败') {
               wx.showToast({
                 title: '预约失败',

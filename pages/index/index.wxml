@@ -61,7 +61,7 @@
         </view>
         <view class='section phoneee'>
             <text>预留手机:</text>
-            <input type='number' placeholder='{{placeHolderForPhone}}'  value='{{phone}}' class='phone' bindinput="write" data-id="4"  adjust-position='true' ></input>
+            <input type='number' placeholder='{{placeHolderForPhone}}'  value='{{phone}}' class='phone' bindinput="write" data-id="4"  adjust-position='true' maxlength='11' ></input>
         </view>
         <view class='section bnone'>
             <button bindtap='order'>预约回收</button>
