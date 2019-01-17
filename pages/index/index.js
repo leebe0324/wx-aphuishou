@@ -16,7 +16,16 @@ Page({
     inputShowed: false,
     inputVal: "",
     addressClick: false,
-
+    items: [{
+        name: '0',
+        value: '9:00-11:00',
+        checked: 'true'
+      },
+      {
+        name: '1',
+        value: '15:00-18:00'
+      }
+    ],
     title: '请选择废品分类（可多选）',
     multiIndex: [0, 0, 0],
     index: 0,
@@ -29,7 +38,6 @@ Page({
     startdate: '',
     enddate: '',
     starttime: '',
-    endtime: '',
     endstart: '',
     v1: '',
     v2: '',
@@ -38,10 +46,9 @@ Page({
     placeHolder: '',
     placeHolderForPhone: '',
     userAddress: '', //用户地址
+    onloadDate: '' //系统初始化时间
   },
-
   onLoad: function() {
-
     //判断地址缓存
     try {
       const value = wx.getStorageSync('addr')
@@ -182,7 +189,9 @@ Page({
     let y = d.getFullYear();
     let _y = y;
     //月份+1，起始下表为0
-    let m = d.getMonth() + 1;
+    let mmm = d.getMonth() + 1;
+    let mm = mmm.toString()
+    let m = 0 + mm
     let _m = m + 1;
     if (_m > 12) {
       _m = 1;
@@ -207,11 +216,50 @@ Page({
     let dateStr = y + '年' + m + '月' + date + '日';
     let startDate = y + '-' + m + '-' + date;
     let endDate = _y + '-' + _m + '-' + date;
+
+    if (d.getHours() > 10) {
+      var item = [{
+          name: '0',
+          value: '9:00-11:00',
+          disabled: 'true'
+        },
+        {
+          name: '1',
+          value: '15:00-18:00',
+          checked: 'true'
+        }
+      ]
+      var pickTime = item[1].value
+      console.log("pT", pickTime)
+      this.setData({
+        items: item,
+        starttime: pickTime
+      })
+      console.log('items', this.data.items)
+    } else {
+      var item = [{
+          name: '0',
+          value: '9:00-11:00',
+          checked: 'true'
+        },
+        {
+          name: '1',
+          value: '15:00-18:00',
+          disabled: 'true'
+        }
+      ]
+      var pickTime = item[0].value
+      console.log("pT", pickTime)
+      this.setData({
+        items: item,
+        starttime: pickTime
+      })
+    }
     _this.setData({
       date: dateStr,
+      onloadDate: dateStr,
       startdate: startDate,
       enddate: endDate,
-      starttime: hours + ':' + min,
       endtime: endtime + ':' + min,
       endstart: endtime + ':' + min,
       placeHolderForPhone: '请输入手机号',
@@ -268,31 +316,74 @@ Page({
       let week = new Date(e.detail.value);
       // let day = this.valday(week.getDay());
       this.setData({
-        date: splitA[0] + '年' + splitA[1] + '月' + splitA[2] + '日 ',
+        date: splitA[0] + '年' + splitA[1] + '月' + splitA[2] + '日',
         starttime: '7:00',
         endtime: '8:00',
         endstart: '8:00'
       })
     }
-  },
-  //开始时间
-  bindstartTimeChange: function(e) {
-    let a = e.detail.value
-    let b = a.split(':')
-    let endtime = (parseInt(b[0]) + 1) + ':' + b[1]
-    this.setData({
-      starttime: e.detail.value,
-      endtime: endtime,
-      endstart: endtime
-    })
-  },
-  //结束时间
-  bindendTimeChange: function(e) {
-    this.setData({
-      endtime: e.detail.value
-    })
+    if (this.data.onloadDate != this.data.date) {
+      var item = [{
+          name: '0',
+          value: '9:00-11:00',
+          checked: 'true'
+        },
+        {
+          name: '1',
+          value: '15:00-18:00',
+        }
+      ]
+      var pickTime = item[0].value
+      this.setData({
+        items: item,
+        starttime: pickTime
+      })
+    } else if (nowDate.getHours() > 10) {
+      var item = [{
+          name: '0',
+          value: '9:00-11:00',
+          disabled: 'true'
+        },
+        {
+          name: '1',
+          value: '15:00-18:00',
+          checked: 'true'
+        }
+      ]
+      var pickTime = item[1].value
+      console.log("pT", pickTime)
+      this.setData({
+        items: item,
+        starttime: pickTime
+      })
+    } else {
+      var item = [{
+          name: '0',
+          value: '9:00-11:00',
+          checked: 'true'
+        },
+        {
+          name: '1',
+          value: '15:00-18:00',
+          disabled: 'true'
+        }
+      ]
+      var pickTime = item[0].value
+      this.setData({
+        items: item,
+        starttime: pickTime
+      })
+    }
   },
 
+  //单选点击时间
+  radioChange(e) {
+    console.log('radio发生change事件，携带value值为：', e)
+    this.setData({
+      starttime: this.data.items[e.detail.value].value
+    })
+    console.log('选择时间', this.data.starttime)
+  },
   // banner点击跳转
   bindEnvironmental: function() {
     console.log('111');
@@ -358,6 +449,7 @@ Page({
 
   order: function() {
 
+
     //正则表达式
     var reg = /1[3|4|5|6|7|8|9][0-9]{9}/;
     let v1 = this.data.v1
@@ -366,7 +458,8 @@ Page({
     let v4 = this.data.phone
     let v5 = this.data.date
     let v6 = this.data.starttime
-    let v7 = this.data.endtime
+
+    console.log('订单提交', v5, v6)
     var flage = reg.test(v4)
     if (this.data.navSelect === '') {
       wx.showToast({
@@ -401,7 +494,7 @@ Page({
         data: {
           openid: this.data.openid,
           categoryIds: this.data.navSelect,
-          pickTime: v5 + v6 + '-' + v7,
+          pickTime: v5 + v6,
           address: v1,
           communityName: '',
           phoneNumber: v4
