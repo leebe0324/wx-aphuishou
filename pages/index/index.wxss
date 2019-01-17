@@ -112,6 +112,9 @@ picker {
     align-items: center;
 }
 
+.bordernone{
+    border-bottom: none;
+}
 .picker {
     padding: 25rpx 30rpx;
 }
