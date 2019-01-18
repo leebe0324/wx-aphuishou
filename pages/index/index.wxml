@@ -24,11 +24,18 @@
             </view>
         </view>
 
-        <view class="section bordert bordernone">
+        <view class="section bordert">
             <picker mode="date" value="{{date}}" start="{{startdate}}" end="{{enddate}}" bindchange="bindDateChange">
-                <view class="picker">
-                    <text class='mr20'>回收日期:</text>
+                <view class="picker recoverDate">
+                    <text>回收日期:</text>
                     <text>{{date}}</text>
+                    <radio-group class="radio-group" bindchange="radioChange">
+                        <label class="radio" wx:key="navItems" wx:for="{{items}}">
+                            <radio value="{{item.name}}" checked="{{item.checked}}" disabled='{{item.disabled}}'>
+                            {{item.value}}
+                            </radio>
+                        </label>
+                    </radio-group>
                 </view>
             </picker>
             <!-- <picker bindchange="bindstartTimeChange" value="{{starttime}}" range="{{array}}" class='' start="07:00" end="20:00" mode="time">
@@ -46,16 +53,17 @@
             <view class='clear'>
             </view>
         </view>
-        <view class="section">
+        <!-- <view class="section">
             <view class="picker">
                 <radio-group class="radio-group" bindchange="radioChange">
                 <label class="radio" wx:key="navItems" wx:for="{{items}}">
-                    <radio value="{{item.name}}" checked="{{item.checked}}" disabled='{{item.disabled}}' />
+                    <radio value="{{item.name}}" checked="{{item.checked}}" disabled='{{item.disabled}}'>
                     {{item.value}}
+                    </radio>
                 </label>
                 </radio-group>
             </view>
-        </view>
+        </view> -->
         <view class='section phoneee'>
             <!-- <picker bindchange='bindAddress' value='{{index}}' range='{{address}}'>
                 <view class='picker'>

@@ -1,4 +1,5 @@
 /**index.wxss**/
+
 .swiper {
     height: 150px;
     width: 100%;
@@ -31,9 +32,11 @@
     flex-wrap: wrap;
     padding-bottom: 20rpx;
 }
-.bordert{
+
+.bordert {
     border-top: 1rpx solid #dcdcdc;
 }
+
 .classify>view {
     display: block;
     position: relative;
@@ -112,16 +115,19 @@ picker {
     align-items: center;
 }
 
-.bordernone{
+.bordernone {
     border-bottom: none;
 }
+
 .picker {
     padding: 25rpx 30rpx;
 }
-.section .picker:nth-child(1), .section .picker:nth-child(2){
+
+.section .picker:nth-child(1), .section .picker:nth-child(2) {
     padding-left: 20rpx;
     padding-right: 20rpx;
 }
+
 input {
     display: inline-block;
     font-size: 28rpx;
@@ -166,14 +172,41 @@ button {
     height: 20rpx;
 }
 
-.place-holder{
+.place-holder {
     color: #d4d4d4;
 }
 
-.mr20{
+.mr20 {
     margin-right: 20rpx;
 }
+
+.recoverDate {
+    display: flex;
+    justify-content: space-between;
+}
+
+.recoverDate>text:first-child {
+    width: 26%;
+}
+
+.recoverDate>text:nth-child(2) {
+    width: 47%;
+}
+
+.recoverDate .radio-group .radio:last-child{
+    margin-top: 20rpx;
+}
+
+radio {
+    transform: scale(0.95);
+}
+
+.radio {
+    display: inline-block;
+}
+
 /* =========== */
+
 /* .nav-list{
   display:flex;
   justify-content: space-between;
