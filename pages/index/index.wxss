@@ -1,5 +1,9 @@
 /**index.wxss**/
 
+form {
+    display: block;
+}
+
 .swiper {
     height: 150px;
     width: 100%;
@@ -31,10 +35,6 @@
     justify-content: center;
     flex-wrap: wrap;
     padding-bottom: 20rpx;
-}
-
-.bordert {
-    border-top: 1rpx solid #dcdcdc;
 }
 
 .classify>view {
@@ -115,12 +115,21 @@ picker {
     align-items: center;
 }
 
+.bordert {
+    border-top: 1rpx solid #dcdcdc;
+    align-items: flex-start;
+}
+
+.bordert picker {
+    width: 70%;
+}
+
 .bordernone {
     border-bottom: none;
 }
 
 .picker {
-    padding: 25rpx 30rpx;
+    padding: 15rpx 30rpx;
 }
 
 .section .picker:nth-child(1), .section .picker:nth-child(2) {
@@ -180,29 +189,22 @@ button {
     margin-right: 20rpx;
 }
 
-.recoverDate {
-    display: flex;
-    justify-content: space-between;
-}
-
-.recoverDate>text:first-child {
-    width: 26%;
-}
-
-.recoverDate>text:nth-child(2) {
-    width: 47%;
-}
-
-.recoverDate .radio-group .radio:last-child{
-    margin-top: 20rpx;
-}
-
 radio {
     transform: scale(0.95);
 }
 
-.radio {
+.radio-group {
     display: inline-block;
+}
+
+.radio-group>label:first-child radio {
+    padding-top: 10rpx;
+    padding-bottom: 5rpx;
+}
+
+.radio-group>label:last-child radio {
+    padding-top: 5rpx;
+    padding-bottom: 10rpx;
 }
 
 /* =========== */
