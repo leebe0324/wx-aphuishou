@@ -218,7 +218,28 @@ Page({
     let startDate = y + '-' + m + '-' + date;
     let endDate = _y + '-' + _m + '-' + date;
 
-    if (d.getHours() > 10) {
+    var nowHours = d.getHours()
+    console.log('nowHours', nowHours)
+    //时间为上午全可选 默认选择9-11点
+    if (nowHours > 0 && nowHours < 11) {
+      var item = [{
+          name: '0',
+          value: '9:00-11:00',
+          checked: 'true'
+        },
+        {
+          name: '1',
+          value: '15:00-18:00',
+        }]
+
+      var pickTime = item[0].value
+      this.setData({
+        items: item,
+        starttime: pickTime
+      })
+
+      //如果是下午，只可选择下午
+    } else if (10 < nowHours && nowHours < 18) {
       var item = [{
           name: '0',
           value: '9:00-11:00',
@@ -228,50 +249,31 @@ Page({
           name: '1',
           value: '15:00-18:00',
           checked: 'true'
-        }
-      ]
+        }]
+
       var pickTime = item[1].value
-      console.log("pT", pickTime)
       this.setData({
         items: item,
         starttime: pickTime,
         loginItems: item
       })
-      console.log('items', this.data.items)
-    } else if (d.getHours() > 17) {
+      //如果是晚上，全部不可选
+    } else {
       var item = [{
-          name: '0',
-          value: '9:00-11:00',
-          disabled: 'true'
-        },
-        {
-          name: '1',
-          value: '15:00-18:00',
-          disabled: 'true'
-        }
-      ]
+        name: '0',
+        value: '9:00-11:00',
+        disabled: 'true'
+      },
+      {
+        name: '1',
+        value: '15:00-18:00',
+        disabled: 'true'
+      }]
       this.setData({
         items: item,
         loginItems: item
       })
-    } else {
-      var item = [{
-          name: '0',
-          value: '9:00-11:00',
-          checked: 'true'
-        },
-        {
-          name: '1',
-          value: '15:00-18:00',
-        }
-      ]
-      var pickTime = item[0].value
-      console.log("pT", pickTime)
-      this.setData({
-        items: item,
-        starttime: pickTime
-      })
-    }
+    } 
     _this.setData({
       date: dateStr,
       onloadDate: dateStr,
@@ -355,8 +357,8 @@ Page({
         {
           name: '1',
           value: '15:00-18:00',
-        }
-      ]
+        }]
+
       var pickTime = item[0].value
       this.setData({
         items: item,

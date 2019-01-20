@@ -1,44 +1,44 @@
 <!--pages/index/index.wxml-->
 
 <view>
-    <swiper indicator-dots="{{indicatorDots}}" class='swiper' autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindtap="bindEnvironmental">
-        <block wx:for="{{imgUrls}}" wx:key="">
-            <swiper-item>
-                <image src="{{item}}" class="slide-image"/>
-            </swiper-item>
-        </block>
-    </swiper>
-    <view class='text-c'>
-        <text class='title'>{{title}}</text>
-    </view>
-    <form>
-        <view class='classify'>
-            <!--wx:for:循环classify数组  wx:key:遍历出classify.id   wx:for-index:遍历classify数组下标-->
-            <view wx:for="{{classify}}" wx:key="classify.id" wx:for-index="idx" bindtap="bindChoice">
-                <image src='{{item.picUrl}}' data-id="{{idx}}"></image>
-                <text>{{item.name}}</text>
-                <!-- 数组数据selected默认false,页面加载时取反为true -->
-                <view class='modal' data-id="{{idx}}" hidden="{{!item.selected}}" catchtap="bindChoice">
-                    <view class='modal-icon' data-id="{{idx}}" catchtap="bindChoice"></view>
-                </view>
-            </view>
+  <swiper indicator-dots="{{indicatorDots}}" class='swiper' autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindtap="bindEnvironmental">
+    <block wx:for="{{imgUrls}}" wx:key="">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image" />
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class='text-c'>
+    <text class='title'>{{title}}</text>
+  </view>
+  <form>
+    <view class='classify'>
+      <!--wx:for:循环classify数组  wx:key:遍历出classify.id   wx:for-index:遍历classify数组下标-->
+      <view wx:for="{{classify}}" wx:key="classify.id" wx:for-index="idx" bindtap="bindChoice">
+        <image src='{{item.picUrl}}' data-id="{{idx}}"></image>
+        <text>{{item.name}}</text>
+        <!-- 数组数据selected默认false,页面加载时取反为true -->
+        <view class='modal' data-id="{{idx}}" hidden="{{!item.selected}}" catchtap="bindChoice">
+          <view class='modal-icon' data-id="{{idx}}" catchtap="bindChoice"></view>
         </view>
+      </view>
+    </view>
 
-        <view class="section bordert">
-            <picker mode="date" value="{{date}}" start="{{startdate}}" end="{{enddate}}" bindchange="bindDateChange">
-                <view class="picker">
-                    <text class='mr20'>回收日期:</text>
-                    <text>{{date}}</text>
-                </view>
-            </picker>
-            <radio-group class="radio-group" bindchange="radioChange">
-                <label class="radio" wx:key="navItems" wx:for="{{items}}">
-                    <radio value="{{item.name}}" checked="{{item.checked}}" disabled='{{item.disabled}}'>
-                    {{item.value}}
-                    </radio>
-                </label>
-            </radio-group>
-            <!-- <picker bindchange="bindstartTimeChange" value="{{starttime}}" range="{{array}}" class='' start="07:00" end="20:00" mode="time">
+    <view class="section bordert">
+      <picker mode="date" value="{{date}}" start="{{startdate}}" end="{{enddate}}" bindchange="bindDateChange">
+        <view class="picker">
+          <text class='mr20'>上门时间:</text>
+          <text>{{date}}</text>
+        </view>
+      </picker>
+      <radio-group class="radio-group" bindchange="radioChange">
+        <label class="radio" wx:key="navItems" wx:for="{{items}}">
+          <radio value="{{item.name}}" checked="{{item.checked}}" disabled='{{item.disabled}}'>
+            {{item.value}}
+          </radio>
+        </label>
+      </radio-group>
+      <!-- <picker bindchange="bindstartTimeChange" value="{{starttime}}" range="{{array}}" class='' start="07:00" end="20:00" mode="time">
                 <view class="picker">
                     {{starttime}}
                 </view>
@@ -49,11 +49,11 @@
                     {{endtime}}
                 </view>
             </picker> -->
-        
-            <view class='clear'>
-            </view>
-        </view>
-        <!-- <view class="section">
+
+      <view class='clear'>
+      </view>
+    </view>
+    <!-- <view class="section">
             <view class="picker">
                 <radio-group class="radio-group" bindchange="radioChange">
                 <label class="radio" wx:key="navItems" wx:for="{{items}}">
@@ -64,8 +64,8 @@
                 </radio-group>
             </view>
         </view> -->
-        <view class='section phoneee'>
-            <!-- <picker bindchange='bindAddress' value='{{index}}' range='{{address}}'>
+    <view class='section phoneee'>
+      <!-- <picker bindchange='bindAddress' value='{{index}}' range='{{address}}'>
                 <view class='picker'>
                     {{address[index]}}
                 </view>
@@ -76,19 +76,17 @@
             <text>层</text>
             <input type='number' placeholder='{{placeHolder}}'bindinput="write" data-id="3" placeholder-class="place-holder" adjust-position='true' maxlength='3'></input>
             <text>房间号</text> -->
-            <text>回收地址:</text>
-            <input type='text' placeholder='请输入您的地址' class='phone'   bindinput='address' maxlength='25' value='{{v1}}'> </input>
-        </view>
-        <view class='section phoneee'>
-            <text>预留手机:</text>
-            <input type='number' placeholder='{{placeHolderForPhone}}'  value='{{phone}}' class='phone' bindinput="write" data-id="4"  adjust-position='true' maxlength='11' ></input>
-        </view>
-        <view class='section bnone'>
-            <button bindtap='order'>预约回收</button>
-        </view>
-        <view class='mb20'>
-        </view>
-    </form>
+      <text>回收地址:</text>
+      <input type='text' placeholder='请输入您的地址' class='phone' bindinput='address' maxlength='25' value='{{v1}}'> </input>
+    </view>
+    <view class='section phoneee'>
+      <text>预留手机:</text>
+      <input type='number' placeholder='{{placeHolderForPhone}}' value='{{phone}}' class='phone' bindinput="write" data-id="4" adjust-position='true' maxlength='11'></input>
+    </view>
+    <view class='section bnone'>
+      <button bindtap='order'>预约回收</button>
+    </view>
+    <view class='mb20'>
+    </view>
+  </form>
 </view>
-
-
