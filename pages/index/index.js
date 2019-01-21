@@ -219,7 +219,6 @@ Page({
     let endDate = _y + '-' + _m + '-' + date;
 
     var nowHours = d.getHours()
-    console.log('nowHours', nowHours)
     //时间为上午全可选 默认选择9-11点
     if (nowHours > 0 && nowHours < 11) {
       var item = [{
@@ -237,7 +236,6 @@ Page({
         items: item,
         starttime: pickTime
       })
-
       //如果是下午，只可选择下午
     } else if (10 < nowHours && nowHours < 18) {
       var item = [{
@@ -271,7 +269,8 @@ Page({
       }]
       this.setData({
         items: item,
-        loginItems: item
+        loginItems: item,
+        starttime: ''
       })
     } 
     _this.setData({
