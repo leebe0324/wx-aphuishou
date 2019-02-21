@@ -124,7 +124,6 @@ Page({
                     wx.showLoading({
                         title: '',
                     })
-
                     wx.request({
                         url: cancelOrder,
                         method: 'POST',
@@ -135,7 +134,8 @@ Page({
                             'content-type': 'application/x-www-form-urlencoded'
                         },
                         success: res => {
-                            console.log('订单列表', res.data)
+                            console.log('订单列表2222', res.data)
+
                             if (res.data.code == 1) {
                                 wx.hideLoading()
                                 wx.showToast({

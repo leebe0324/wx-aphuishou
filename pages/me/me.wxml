@@ -13,13 +13,13 @@
             <icon class='iconfont icon-you'></icon>
         </view>
     </navigator>
-    <navigator url="/pages/Coupons/Coupons?openid={{openid}}">
+    <!-- <navigator url="/pages/Coupons/Coupons?openid={{openid}}">
         <view class='myorder'>
             <icon class='iconfont icon-youhuiquan' style='color:#ff9a76'></icon>
             <text>我的优惠券</text>
             <icon class='iconfont icon-you rr'></icon>
         </view>
-    </navigator>
+    </navigator> -->
     <navigator url="/pages/Feedback/Feedback?openid={{openid}}&nickname={{nickName}}">
         <view class='myorder'>
             <icon class='iconfont icon-liuyan-fill' style='color:rgb(113, 146, 229)'></icon>

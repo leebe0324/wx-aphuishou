@@ -1,39 +1,40 @@
 {
-    "pages": [
-        "pages/AppLunchPages/start",
-        "pages/index/index",
-        "pages/me/me",
-        "pages/orderSuccess/orderSuccess",
-        "pages/prise/prise",
-        "pages/Coupons/Coupons",
-        "pages/myOrder/myOrder",
-        "pages/Environmental/Environmental",
-        "pages/Feedback/Feedback"
-    ],
-    "window": {
-        "navigationBarBackgroundColor": "#F8F8F8",
-        "navigationBarTextStyle": "black",
-        "navigationBarTitleText": "来收啦",
-        "backgroundColor": "#ededed"
-    },
-    "tabBar": {
-        "color": "#bababa",
-        "selectedColor": "#1E90FF",
-        "borderStyle": "#C0C0C0",
-        "backgroundColor": "#FFFFFF",
-        "list": [
-            {
-                "text": "首页",
-                "pagePath": "pages/index/index",
-                "iconPath": "assets/image/home.png",
-                "selectedIconPath": "assets/image/home-active.png"
-            },
-            {
-                "text": "我的",
-                "pagePath": "pages/me/me",
-                "iconPath": "assets/image/my.png",
-                "selectedIconPath": "assets/image/my-active.png"
-            }
-        ]
-    }
+  "pages": [
+    "pages/AppLunchPages/start",
+    "pages/index/index",
+    "pages/me/me",
+    "pages/orderSuccess/orderSuccess",
+    "pages/prise/prise",
+    "pages/Coupons/Coupons",
+    "pages/myOrder/myOrder",
+    "pages/Environmental/Environmental",
+    "pages/Feedback/Feedback",
+    "pages/Coupons/QRcode"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "来收啦",
+    "backgroundColor": "#ededed"
+  },
+  "tabBar": {
+    "color": "#bababa",
+    "selectedColor": "#1E90FF",
+    "borderStyle": "#C0C0C0",
+    "backgroundColor": "#FFFFFF",
+    "list": [
+      {
+        "text": "首页",
+        "pagePath": "pages/index/index",
+        "iconPath": "assets/image/home.png",
+        "selectedIconPath": "assets/image/home-active.png"
+      },
+      {
+        "text": "我的",
+        "pagePath": "pages/me/me",
+        "iconPath": "assets/image/my.png",
+        "selectedIconPath": "assets/image/my-active.png"
+      }
+    ]
+  }
 }

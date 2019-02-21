@@ -6,7 +6,9 @@
             <text>等待收取人员联系</text>
         </view>
     </view>
+    <navigator url="/pages/myOrder/myOrder?openid={{openid}}">
     <button class="{{oBtn == true? 'btn':''}}"bindtap='goprice' disabled='{{oBtn}}'>
-        去抽奖
+        确定
     </button>
+     </navigator>
 </view>

@@ -26,9 +26,15 @@ Page({
         wx.showLoading({
             title: '',
         })
-        wx.navigateTo({
-            url: '/pages/prise/prise?orderNumber=' + this.data.orderNumber + '&openid=' + this.data.openid,
-        });
+        // wx.navigateTo({
+        //  // 去抽奖
+        //     url: '/pages/prise/prise?orderNumber=' + this.data.orderNumber + '&openid=' + this.data.openid,
+            
+        // });
+      wx.navigateBack({
+        delta: 1
+      })
+        
         this.setData({
             oBtn: true
         })

@@ -1,4 +1,5 @@
 const coupon = 'https://www.innothinking.cn/coupon'
+ var QR = require("../../utils/qrcode.js")
 
 Page({
 
@@ -81,20 +82,27 @@ Page({
         var context
         if (e._relatedInfo.anchorTargetText == '待审核') {
             context = '后台系统核实订单后，可立即使用'
-        } else {
-            context = e.target.id
-        }
-
-        wx.showModal({
+          wx.showModal({
             title: '提示',
             content: context,
             showCancel: false,
             success(res) {
-                if (res.confirm) {
-                    console.log('用户点击确定')
-                }
+              if (res.confirm) {
+                console.log('用户点击确定')
+              }
             }
-        })
+          })
+        } else {
+            // context = e.target.id
+
+            wx.navigateTo({
+              url: 'QRcode?id='+e.target.id,
+            })
+
+
+        }
+
+
 
     },
 
